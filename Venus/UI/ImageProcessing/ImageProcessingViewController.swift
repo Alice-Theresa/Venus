@@ -43,11 +43,23 @@ class ImageProcessingViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
-    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     let queue = DispatchQueue(label: "com.image.processing")
     let filter: Filter
-    var pixelSize: UInt = 1
+    var pixelSize: Int = 1
+//    var sum: Float = 0
+    
+    lazy var dimmingView: UIView = {
+        let view = UIView(frame: UIScreen.main.bounds)
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)
+        
+        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        indicatorView.center = view.center
+        indicatorView.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)
+        indicatorView.startAnimating()
+        view.addSubview(indicatorView)
+        return view
+    }()
     
     init(filter: Filter) {
         self.filter = filter
@@ -61,29 +73,29 @@ class ImageProcessingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
-        let image = UIImage(named: "Beauty.JPG")!
-//        let image = UIImage(named: "IMG_0227.jpg")!
-        inTexture = texture(from: image)
     }
     
     func setup() {
+        
         stepper.maximumValue = filter.maxValue
         stepper.minimumValue = filter.minValue
         stepper.stepValue = filter.step
+        
+        let image = UIImage(named: "Beauty.JPG")!
+        inTexture = texture(from: image)
     }
 
     @IBAction func changeValue(_ sender: Any) {
         if let stepper = sender as? UIStepper {
-            pixelSize = UInt(stepper.value)
+            pixelSize = Int(stepper.value)
             valueLabel.text = "\(pixelSize)"
-            indicatorView.startAnimating()
+            UIApplication.shared.keyWindow?.addSubview(dimmingView)
             queue.async {
                 self.applyFilter()
                 let finalResult = self.image(from: self.outTexture)
                 DispatchQueue.main.async {
-                    self.indicatorView.stopAnimating()
+                    self.dimmingView.removeFromSuperview()
                     self.imageView.image = finalResult
                 }
             }
@@ -100,6 +112,21 @@ class ImageProcessingViewController: UIViewController {
         
         let buffer = device.makeBuffer(bytes: &pixelSize, length: MemoryLayout<UInt>.size, options: MTLResourceOptions.storageModeShared)
         commandEncoder.setBuffer(buffer, offset: 0, index: 0)
+        
+        var sum: Float = 0
+        var temp: Double = 0
+        let sigma: Double = (Double(pixelSize) * 2 + 1) / 2
+        
+        for x in stride(from: -pixelSize, through: pixelSize, by: 1) {
+            for y in stride(from: pixelSize, through: -pixelSize, by: -1) {
+                let ep: Double = -(pow(Double(x), 2) + pow(Double(y), 2)) / 2 / pow(sigma, 2)
+                let res: Double = 0.159 / pow(sigma, 2) * exp(ep)
+                temp = temp + res
+            }
+        }
+        sum = Float(temp)
+        let buffer2 = device.makeBuffer(bytes: &sum, length: MemoryLayout<Float>.size, options: MTLResourceOptions.storageModeShared)
+        commandEncoder.setBuffer(buffer2, offset: 0, index: 1)
         
         commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
         commandEncoder.endEncoding()

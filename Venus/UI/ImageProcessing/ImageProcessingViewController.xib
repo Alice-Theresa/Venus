@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageProcessingViewController" customModule="Venus" customModuleProvider="target">
             <connections>
                 <outlet property="imageView" destination="oDH-pb-sbi" id="WJP-cc-WTC"/>
-                <outlet property="indicatorView" destination="Inb-dI-wJX" id="nBG-ly-kSY"/>
                 <outlet property="stepper" destination="avM-bj-rt1" id="9hx-G6-iNk"/>
                 <outlet property="valueLabel" destination="FBR-6H-Ll4" id="5tV-ag-y0Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -52,15 +51,10 @@
                         <constraint firstAttribute="trailing" secondItem="avM-bj-rt1" secondAttribute="trailing" constant="50" id="z0D-ir-GVG"/>
                     </constraints>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Inb-dI-wJX">
-                    <rect key="frame" x="169" y="325.5" width="37" height="37"/>
-                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fT3-B4-SiT" secondAttribute="trailing" id="0YR-2g-hPo"/>
-                <constraint firstItem="Inb-dI-wJX" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="3aS-bv-kyQ"/>
-                <constraint firstItem="Inb-dI-wJX" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="K6S-7j-ztO"/>
                 <constraint firstItem="fT3-B4-SiT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="S5G-pe-mV3"/>
                 <constraint firstItem="fT3-B4-SiT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="jJb-eA-HXR"/>
                 <constraint firstAttribute="bottom" secondItem="oDH-pb-sbi" secondAttribute="bottom" id="nan-aE-E96"/>

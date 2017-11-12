@@ -107,10 +107,10 @@
 		76D686CA1FB09425002DDA08 /* Venus */ = {
 			isa = PBXGroup;
 			children = (
-				76DACEE71FB7F2D0005E5AE5 /* Resources */,
 				76D686CB1FB09425002DDA08 /* AppDelegate.swift */,
+				76DACEE71FB7F2D0005E5AE5 /* Resources */,
+				76DACEED1FB80FDE005E5AE5 /* Model */,
 				76DACEE81FB7FA4C005E5AE5 /* Shader */,
-				76DACEE11FB7E05E005E5AE5 /* Filter.swift */,
 				521F81981FB545330010CAF7 /* UI */,
 				76D686D21FB09425002DDA08 /* Assets.xcassets */,
 				76D686D41FB09425002DDA08 /* LaunchScreen.storyboard */,
@@ -134,6 +134,14 @@
 				521F81A51FB596100010CAF7 /* Filter.metal */,
 			);
 			path = Shader;
+			sourceTree = "<group>";
+		};
+		76DACEED1FB80FDE005E5AE5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				76DACEE11FB7E05E005E5AE5 /* Filter.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
