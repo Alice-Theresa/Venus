@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157AC61FB937D50045116E /* EncoderBufferSetting.swift */; };
 		521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F818F1FB541FB0010CAF7 /* FilterSelectViewController.swift */; };
 		521F81921FB542140010CAF7 /* FilterSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81911FB542140010CAF7 /* FilterSelectViewModel.swift */; };
 		521F81961FB545220010CAF7 /* FilterSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81951FB545220010CAF7 /* FilterSelectModel.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52157AC61FB937D50045116E /* EncoderBufferSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderBufferSetting.swift; sourceTree = "<group>"; };
 		521F818F1FB541FB0010CAF7 /* FilterSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectViewController.swift; sourceTree = "<group>"; };
 		521F81911FB542140010CAF7 /* FilterSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectViewModel.swift; sourceTree = "<group>"; };
 		521F81951FB545220010CAF7 /* FilterSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectModel.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				521F819E1FB547630010CAF7 /* ImageProcessingViewController.swift */,
 				521F819F1FB547630010CAF7 /* ImageProcessingViewController.xib */,
+				52157AC61FB937D50045116E /* EncoderBufferSetting.swift */,
 			);
 			path = ImageProcessing;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				521F81A01FB547630010CAF7 /* ImageProcessingViewController.swift in Sources */,
 				521F81AA1FB59BD00010CAF7 /* ProjectSelectViewController.swift in Sources */,
+				52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */,
 				521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */,
 				521F81961FB545220010CAF7 /* FilterSelectModel.swift in Sources */,
 				76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */,

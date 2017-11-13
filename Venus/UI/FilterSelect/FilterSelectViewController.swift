@@ -47,7 +47,7 @@ extension FilterSelectViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterSelectViewController.cellIdentifier, for: indexPath)
         
         let model = viewModel.filters[indexPath.row]
-        cell.textLabel?.text = model.title
+        cell.textLabel?.text = model.title.rawValue
         return cell
     }
     

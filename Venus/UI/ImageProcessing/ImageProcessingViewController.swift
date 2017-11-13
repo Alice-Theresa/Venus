@@ -23,13 +23,19 @@ class ImageProcessingViewController: UIViewController {
         return self.device.makeDefaultLibrary()
     }()
     
-    lazy var pipelineState: MTLComputePipelineState = {
-        let function: MTLFunction! = self.library.makeFunction(name: self.filter.filterName)
-        let pipelineState = try! self.device.makeComputePipelineState(function: function)
-        return pipelineState
+    lazy var pipelineState: [MTLComputePipelineState] = {
+        var pipelines = [MTLComputePipelineState]()
+        
+        for filter in self.filter.filterFunctions {
+            let function: MTLFunction! = self.library.makeFunction(name: filter.rawValue)
+            let pipelineState = try! self.device.makeComputePipelineState(function: function)
+            pipelines.append(pipelineState)
+        }
+        return pipelines
     }()
     
     var inTexture: MTLTexture!
+    var tempTexture: MTLTexture!
     var outTexture: MTLTexture!
     
     let bytesPerPixel = 4
@@ -47,7 +53,6 @@ class ImageProcessingViewController: UIViewController {
     let queue = DispatchQueue(label: "com.image.processing")
     let filter: Filter
     var pixelSize: Int = 1
-//    var sum: Float = 0
     
     lazy var dimmingView: UIView = {
         let view = UIView(frame: UIScreen.main.bounds)
@@ -64,7 +69,7 @@ class ImageProcessingViewController: UIViewController {
     init(filter: Filter) {
         self.filter = filter
         super.init(nibName: nil, bundle: nil)
-        title = filter.filterName
+        title = filter.filterName.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,6 +87,7 @@ class ImageProcessingViewController: UIViewController {
         stepper.minimumValue = filter.minValue
         stepper.stepValue = filter.step
         
+//        let image = UIImage(named: "IMG_0227.jpg")!
         let image = UIImage(named: "Beauty.JPG")!
         inTexture = texture(from: image)
     }
@@ -103,36 +109,25 @@ class ImageProcessingViewController: UIViewController {
     }
     
     func applyFilter() {
-        let commandBuffer: MTLCommandBuffer! = commandQueue.makeCommandBuffer()
-        let commandEncoder: MTLComputeCommandEncoder! = commandBuffer.makeComputeCommandEncoder()!
-        
-        commandEncoder.setComputePipelineState(pipelineState)
-        commandEncoder.setTexture(inTexture, index: 0)
-        commandEncoder.setTexture(outTexture, index: 1)
-        
-        let buffer = device.makeBuffer(bytes: &pixelSize, length: MemoryLayout<UInt>.size, options: MTLResourceOptions.storageModeShared)
-        commandEncoder.setBuffer(buffer, offset: 0, index: 0)
-        
-        var sum: Float = 0
-        var temp: Double = 0
-        let sigma: Double = (Double(pixelSize) * 2 + 1) / 2
-        
-        for x in stride(from: -pixelSize, through: pixelSize, by: 1) {
-            for y in stride(from: pixelSize, through: -pixelSize, by: -1) {
-                let ep: Double = -(pow(Double(x), 2) + pow(Double(y), 2)) / 2 / pow(sigma, 2)
-                let res: Double = 0.159 / pow(sigma, 2) * exp(ep)
-                temp = temp + res
-            }
+        tempTexture = inTexture
+        for singleState in pipelineState {
+            let commandBuffer: MTLCommandBuffer! = commandQueue.makeCommandBuffer()
+            let commandEncoder: MTLComputeCommandEncoder! = commandBuffer.makeComputeCommandEncoder()!
+            
+            commandEncoder.setComputePipelineState(singleState)
+            commandEncoder.setTexture(tempTexture, index: 0)
+            commandEncoder.setTexture(outTexture, index: 1)
+            
+            EncoderBuffer.setting(device: device, encoder: commandEncoder, inputValue: pixelSize, filter: filter.filterName)
+            
+            commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
+            commandEncoder.endEncoding()
+            
+            commandBuffer.commit()
+            commandBuffer.waitUntilCompleted()
+            tempTexture = outTexture
         }
-        sum = Float(temp)
-        let buffer2 = device.makeBuffer(bytes: &sum, length: MemoryLayout<Float>.size, options: MTLResourceOptions.storageModeShared)
-        commandEncoder.setBuffer(buffer2, offset: 0, index: 1)
-        
-        commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
-        commandEncoder.endEncoding()
-        
-        commandBuffer.commit()
-        commandBuffer.waitUntilCompleted()
+        outTexture = tempTexture
     }
     
     func texture(from image: UIImage) -> MTLTexture {

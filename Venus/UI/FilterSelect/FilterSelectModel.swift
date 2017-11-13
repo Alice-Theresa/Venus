@@ -10,7 +10,7 @@ import Foundation
 
 struct FilterSelectModel {
     
-    let title: String
+    let title: FilterName
     let filter: Filter
     
 }
