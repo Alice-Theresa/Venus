@@ -26,16 +26,16 @@ class FilterSelectViewModel {
         let gaussianBlurFilter = Filter(filterName: .GaussianBlur,
                                         filterFunctions: [.GaussianBlur],
                                         minValue: 1,
-                                        maxValue: 50,
-                                        step: 6)
+                                        maxValue: 51,
+                                        step: 10)
         let gaussianBlur = FilterSelectModel(title: .GaussianBlur, filter: gaussianBlurFilter)
         temp.append(gaussianBlur)
         
         let fastGaussianBlurFilter = Filter(filterName: .FastGaussianBlur,
                                             filterFunctions: [.FastGaussianBlurRow, .FastGaussianBlurColumn],
                                             minValue: 1,
-                                            maxValue: 50,
-                                            step: 6)
+                                            maxValue: 201,
+                                            step: 20)
         let fastGaussianBlur = FilterSelectModel(title: .FastGaussianBlur, filter: fastGaussianBlurFilter)
         temp.append(fastGaussianBlur)
         
