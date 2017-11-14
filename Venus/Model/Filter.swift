@@ -12,7 +12,8 @@ enum FilterName: String {
     case Mosaic = "Mosaic"
     case GaussianBlur = "Gaussian Blur"
     case FastGaussianBlur = "Fast Gaussian Blur"
-    case IIRGaussianBlur = "IIR GaussianBlur"
+    case IIRGaussianBlur = "IIR Gaussian Blur"
+    case BilateralFilter = "Bilateral Filter"
 }
 
 enum FilterFunction: String {

@@ -26,6 +26,7 @@ class FilterSelectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Filter Select"
         view.addSubview(self.tableView)
     }
 

@@ -82,7 +82,6 @@ class ImageProcessingViewController: UIViewController {
     }
     
     func setup() {
-        
         stepper.maximumValue = filter.maxValue
         stepper.minimumValue = filter.minValue
         stepper.stepValue = filter.step

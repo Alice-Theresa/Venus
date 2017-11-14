@@ -13,8 +13,10 @@
 		521F81961FB545220010CAF7 /* FilterSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81951FB545220010CAF7 /* FilterSelectModel.swift */; };
 		521F81A01FB547630010CAF7 /* ImageProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F819E1FB547630010CAF7 /* ImageProcessingViewController.swift */; };
 		521F81A11FB547630010CAF7 /* ImageProcessingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521F819F1FB547630010CAF7 /* ImageProcessingViewController.xib */; };
-		521F81A61FB596100010CAF7 /* Filter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 521F81A51FB596100010CAF7 /* Filter.metal */; };
+		521F81A61FB596100010CAF7 /* Mosaic.metal in Sources */ = {isa = PBXBuildFile; fileRef = 521F81A51FB596100010CAF7 /* Mosaic.metal */; };
 		521F81AA1FB59BD00010CAF7 /* ProjectSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81A91FB59BD00010CAF7 /* ProjectSelectViewController.swift */; };
+		524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */; };
+		524CD0BD1FBAFA9A0081F0E6 /* BilateralFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */; };
 		76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D686CB1FB09425002DDA08 /* AppDelegate.swift */; };
 		76D686D31FB09425002DDA08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D686D21FB09425002DDA08 /* Assets.xcassets */; };
 		76D686D61FB09425002DDA08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D686D41FB09425002DDA08 /* LaunchScreen.storyboard */; };
@@ -30,8 +32,10 @@
 		521F81951FB545220010CAF7 /* FilterSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectModel.swift; sourceTree = "<group>"; };
 		521F819E1FB547630010CAF7 /* ImageProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingViewController.swift; sourceTree = "<group>"; };
 		521F819F1FB547630010CAF7 /* ImageProcessingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageProcessingViewController.xib; sourceTree = "<group>"; };
-		521F81A51FB596100010CAF7 /* Filter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Filter.metal; sourceTree = "<group>"; };
+		521F81A51FB596100010CAF7 /* Mosaic.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Mosaic.metal; sourceTree = "<group>"; };
 		521F81A91FB59BD00010CAF7 /* ProjectSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectViewController.swift; sourceTree = "<group>"; };
+		524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GaussianBlur.metal; sourceTree = "<group>"; };
+		524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BilateralFilter.metal; sourceTree = "<group>"; };
 		76D686C81FB09425002DDA08 /* Venus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D686CB1FB09425002DDA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D686D21FB09425002DDA08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,7 +138,9 @@
 		76DACEE81FB7FA4C005E5AE5 /* Shader */ = {
 			isa = PBXGroup;
 			children = (
-				521F81A51FB596100010CAF7 /* Filter.metal */,
+				521F81A51FB596100010CAF7 /* Mosaic.metal */,
+				524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */,
+				524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */,
 			);
 			path = Shader;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				521F81A01FB547630010CAF7 /* ImageProcessingViewController.swift in Sources */,
+				524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */,
 				521F81AA1FB59BD00010CAF7 /* ProjectSelectViewController.swift in Sources */,
 				52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */,
 				521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */,
@@ -229,7 +236,8 @@
 				76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */,
 				76DACEE21FB7E05E005E5AE5 /* Filter.swift in Sources */,
 				521F81921FB542140010CAF7 /* FilterSelectViewModel.swift in Sources */,
-				521F81A61FB596100010CAF7 /* Filter.metal in Sources */,
+				521F81A61FB596100010CAF7 /* Mosaic.metal in Sources */,
+				524CD0BD1FBAFA9A0081F0E6 /* BilateralFilter.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

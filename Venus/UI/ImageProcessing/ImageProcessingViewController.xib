@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Beauty.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="oDH-pb-sbi">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-B4-SiT">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
@@ -35,8 +35,8 @@
                                 <action selector="changeValue:" destination="-1" eventType="valueChanged" id="ccr-Gh-nCD"/>
                             </connections>
                         </stepper>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBR-6H-Ll4">
-                            <rect key="frame" x="50" y="14.5" width="42" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBR-6H-Ll4">
+                            <rect key="frame" x="50" y="14.5" width="10.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -56,13 +56,14 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fT3-B4-SiT" secondAttribute="trailing" id="0YR-2g-hPo"/>
                 <constraint firstItem="fT3-B4-SiT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="S5G-pe-mV3"/>
+                <constraint firstItem="fT3-B4-SiT" firstAttribute="top" secondItem="oDH-pb-sbi" secondAttribute="bottom" id="T8t-CR-yQs"/>
                 <constraint firstItem="fT3-B4-SiT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="jJb-eA-HXR"/>
-                <constraint firstAttribute="bottom" secondItem="oDH-pb-sbi" secondAttribute="bottom" id="nan-aE-E96"/>
                 <constraint firstItem="oDH-pb-sbi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oot-DE-HRn"/>
                 <constraint firstItem="oDH-pb-sbi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qYW-dm-ajv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oDH-pb-sbi" secondAttribute="trailing" id="sTh-a5-YJ4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>
     <resources>
