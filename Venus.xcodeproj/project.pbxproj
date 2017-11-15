@@ -95,6 +95,13 @@
 			path = ProjectSelect;
 			sourceTree = "<group>";
 		};
+		524CD0BE1FBBFAA80081F0E6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		76D686BF1FB09425002DDA08 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				76D686CB1FB09425002DDA08 /* AppDelegate.swift */,
+				524CD0BE1FBBFAA80081F0E6 /* Utils */,
 				76DACEE71FB7F2D0005E5AE5 /* Resources */,
 				76DACEED1FB80FDE005E5AE5 /* Model */,
 				76DACEE81FB7FA4C005E5AE5 /* Shader */,

@@ -22,6 +22,7 @@ enum FilterFunction: String {
     case FastGaussianBlurRow = "FastGaussianBlurRow"
     case FastGaussianBlurColumn = "FastGaussianBlurColumn"
     case IIRGaussianBlur = "IIRGaussianBlur"
+    case BilateralFilter = "BilateralFilter"
 }
 
 struct Filter {

@@ -39,6 +39,14 @@ class FilterSelectViewModel {
         let fastGaussianBlur = FilterSelectModel(title: .FastGaussianBlur, filter: fastGaussianBlurFilter)
         temp.append(fastGaussianBlur)
         
+        let bilateralFilter = Filter(filterName: .BilateralFilter,
+                                            filterFunctions: [.BilateralFilter],
+                                            minValue: 1,
+                                            maxValue: 201,
+                                            step: 5)
+        let bilateralBlur = FilterSelectModel(title: .BilateralFilter, filter: bilateralFilter)
+        temp.append(bilateralBlur)
+        
         filters = temp
     }
 }

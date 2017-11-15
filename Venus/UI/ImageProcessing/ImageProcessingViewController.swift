@@ -87,7 +87,8 @@ class ImageProcessingViewController: UIViewController {
         stepper.stepValue = filter.step
         
 //        let image = UIImage(named: "IMG_0227.jpg")!
-        let image = UIImage(named: "Beauty.JPG")!
+        let image = UIImage(named: "Beauty.jpg")!
+        imageView.image = image
         inTexture = texture(from: image)
     }
 

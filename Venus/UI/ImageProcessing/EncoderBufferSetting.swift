@@ -20,6 +20,8 @@ class EncoderBuffer {
             EncoderBuffer.gaussianBlurBuffer(device: device, encoder: encoder, inputValue: inputValue)
         case .FastGaussianBlur:
             EncoderBuffer.fastGaussianBlurBuffer(device: device, encoder: encoder, inputValue: inputValue)
+        case .BilateralFilter:
+            EncoderBuffer.BilateralBuffer(device: device, encoder: encoder, inputValue: inputValue)
         default:
             break
         }
@@ -105,5 +107,10 @@ class EncoderBuffer {
         let buffer = device.makeBuffer(bytes: &floatMatrix, length: MemoryLayout<Float>.size * length, options: MTLResourceOptions.storageModeShared)
         encoder.setBuffer(buffer, offset: 0, index: 1)
     }
+    
+    private class func BilateralBuffer(device: MTLDevice, encoder: MTLComputeCommandEncoder, inputValue: Int) {
+        EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
+    }
+    
     
 }
