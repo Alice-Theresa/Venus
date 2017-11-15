@@ -170,6 +170,6 @@ class ImageProcessingViewController: UIViewController {
         
         let dstImageFilter = context?.makeImage()
         
-        return UIImage(cgImage: dstImageFilter!, scale: 0.0, orientation: UIImageOrientation.left)
+        return UIImage(cgImage: dstImageFilter!, scale: 0.0, orientation: UIImageOrientation.up)
     }
 }
