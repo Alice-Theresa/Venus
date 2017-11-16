@@ -19,8 +19,8 @@ kernel void GaussianBlur(texture2d<float, access::read> inTexture [[texture(0)]]
     float3 secondSum = float3(0, 0, 0);
     
     int counter = 0;
-    for (float x = -radius; x < radius + 1; x++) {
-        for (float y = radius; y > -radius - 1; y--) {
+    for (float x = -radius; x <= radius; x++) {
+        for (float y = -radius; y <= radius; y++)  {
             float res = mat[counter];
             uint2 loc = uint2(gid.x + x, gid.y + y);
             float4 colorAtPixel = inTexture.read(loc);
@@ -41,7 +41,7 @@ kernel void FastGaussianBlurRow(texture2d<float, access::read> inTexture [[textu
     float3 sum = float3(0, 0, 0);
     
     int counter = 0;
-    for (float x = -radius; x < radius + 1; x++) {
+    for (float x = -radius; x <= radius; x++) {
         float res = list[counter];
         uint2 loc = uint2(gid.x + x, gid.y);
         float4 colorAtPixel = inTexture.read(loc);
@@ -61,7 +61,7 @@ kernel void FastGaussianBlurColumn(texture2d<float, access::read> inTexture [[te
     float3 sum = float3(0, 0, 0);
     
     int counter = 0;
-    for (float y = -radius; y < radius + 1; y++) {
+    for (float y = -radius; y <= radius; y++) {
         float res = list[counter];
         uint2 loc = uint2(gid.x, gid.y + y);
         float4 colorAtPixel = inTexture.read(loc);

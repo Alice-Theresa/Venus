@@ -42,33 +42,8 @@ class EncoderBuffer {
         EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
         
         let radius = inputValue
-        
-        var sum: Double = 0
-        var counter: Int = 0
-        let sigma: Double = (Double(radius) * 2 + 1) / 2
         let length = (radius * 2 + 1) * (radius * 2 + 1)
-        let coe = 1 / 2 / Double.pi
-        let indexcoe = -1 / 2 / pow(sigma, 2)
-        
-        var doubleMatrix: [Double] = Array(repeating: 0, count: length)
-        var floatMatrix: [Float] = Array(repeating: 0, count: length)
-        
-        for x in stride(from: -radius, through: radius, by: 1) {
-            for y in stride(from: radius, through: -radius, by: -1) {
-                let ep: Double = (pow(Double(x), 2) + pow(Double(y), 2)) * indexcoe
-                let res: Double = coe / pow(sigma, 2) * exp(ep)
-                sum = sum + res
-                doubleMatrix[counter] = res
-                counter += 1
-            }
-        }
-        
-        // normalization
-        counter = 0
-        for _ in 0..<length {
-            floatMatrix[counter] = Float(doubleMatrix[counter] / sum)
-            counter += 1
-        }
+        var floatMatrix = MathsGenerator.Gaussian2DMatrix(radius: radius)
         
         let buffer = device.makeBuffer(bytes: &floatMatrix, length: MemoryLayout<Float>.size * length, options: MTLResourceOptions.storageModeShared)
         encoder.setBuffer(buffer, offset: 0, index: 1)
@@ -78,31 +53,8 @@ class EncoderBuffer {
         EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
         
         let radius = inputValue
-        
-        var sum: Double = 0
-        var counter: Int = 0
-        let sigma: Double = (Double(radius) * 2 + 1) / 2
         let length = (radius * 2 + 1)
-        let coe = 1 / sqrt(2 * Double.pi)
-        let indexcoe = -1 / 2 / pow(sigma, 2)
-        
-        var doubleMatrix: [Double] = Array(repeating: 0, count: length)
-        var floatMatrix: [Float] = Array(repeating: 0, count: length)
-        
-        for x in stride(from: -radius, through: radius, by: 1) {
-            let ep: Double = pow(Double(x), 2) * indexcoe
-            let res: Double = coe / sigma * exp(ep)
-            sum = sum + res
-            doubleMatrix[counter] = res
-            counter += 1
-        }
-        
-        // normalization
-        counter = 0
-        for _ in 0..<length {
-            floatMatrix[counter] = Float(doubleMatrix[counter] / sum)
-            counter += 1
-        }
+        var floatMatrix = MathsGenerator.Gaussian1DMatrix(radius: radius)
         
         let buffer = device.makeBuffer(bytes: &floatMatrix, length: MemoryLayout<Float>.size * length, options: MTLResourceOptions.storageModeShared)
         encoder.setBuffer(buffer, offset: 0, index: 1)
@@ -110,7 +62,32 @@ class EncoderBuffer {
     
     private class func BilateralBuffer(device: MTLDevice, encoder: MTLComputeCommandEncoder, inputValue: Int) {
         EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
+        
+        let sigmaD: Float = 10;
+        let sigmaR: Float = 300;
+        let coeD: Float = -0.5 / pow(sigmaD, 2);
+        let coeR: Float = -0.5 / pow(sigmaR, 2);
+        
+        var floatlist = [Float]()
+        for i in 0...255 {
+            floatlist.append(exp(Float(i) * Float(i) * coeR))
+        }
+        
+        let buffer1 = device.makeBuffer(bytes: &floatlist, length: MemoryLayout<Float>.size * 256, options: MTLResourceOptions.storageModeShared)
+        encoder.setBuffer(buffer1, offset: 0, index: 1)
+        
+        
+        let radius = inputValue
+        let length = (radius * 2 + 1) * (radius * 2 + 1)
+        var floatMatrix = [Float]()
+        
+        for x in stride(from: -radius, through: radius, by: 1) {
+            for y in stride(from: radius, through: -radius, by: -1) {
+                floatMatrix.append(exp((Float(x) * Float(x) + Float(y) * Float(y)) * coeD))
+            }
+        }
+        let buffer2 = device.makeBuffer(bytes: &floatMatrix, length: MemoryLayout<Float>.size * length, options: MTLResourceOptions.storageModeShared)
+        encoder.setBuffer(buffer2, offset: 0, index: 2)
     }
-    
     
 }
