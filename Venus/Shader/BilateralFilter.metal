@@ -30,9 +30,10 @@ kernel void BilateralFilter(texture2d<float, access::read> inTexture [[texture(0
             uint2 pixel = uint2(gid.x + x, gid.y + y);
             float4 colorAtPixel = inTexture.read(pixel);
             
-            float closeness = 0.5 - distance(colorAtPixel.xyz, colorAtCenter.xyz) / length(float3(1,1,1));
-            float res = matrix[counter];
-            float weight = closeness * res;
+            float closeness = exp(pow(distance(colorAtPixel.xyz, colorAtCenter.xyz), 2) * list[0]);
+//            float closeness = 1 - distance(colorAtPixel.xyz, colorAtCenter.xyz) / length(float3(1,1,1));
+            float spacial = matrix[counter];
+            float weight = closeness * spacial;
             
             colorSum += colorAtPixel.rgb * weight;
             weightSum += weight;

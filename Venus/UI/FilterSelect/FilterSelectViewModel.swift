@@ -43,7 +43,7 @@ class FilterSelectViewModel {
                                             filterFunctions: [.BilateralFilter],
                                             minValue: 1,
                                             maxValue: 51,
-                                            step: 5)
+                                            step: 10)
         let bilateralBlur = FilterSelectModel(title: .BilateralFilter, filter: bilateralFilter)
         temp.append(bilateralBlur)
         

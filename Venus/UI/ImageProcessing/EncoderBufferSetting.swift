@@ -63,17 +63,12 @@ class EncoderBuffer {
     private class func BilateralBuffer(device: MTLDevice, encoder: MTLComputeCommandEncoder, inputValue: Int) {
         EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
         
-        let sigmaD: Float = 10;
-        let sigmaR: Float = 300;
+        let sigmaD: Float = 10;  // 空间域
+        let sigmaR: Float = 0.3; // 值域
         let coeD: Float = -0.5 / pow(sigmaD, 2);
-        let coeR: Float = -0.5 / pow(sigmaR, 2);
+        var coeR: Float = -0.5 / pow(sigmaR, 2);
         
-        var floatlist = [Float]()
-        for i in 0...255 {
-            floatlist.append(exp(Float(i) * Float(i) * coeR))
-        }
-        
-        let buffer1 = device.makeBuffer(bytes: &floatlist, length: MemoryLayout<Float>.size * 256, options: MTLResourceOptions.storageModeShared)
+        let buffer1 = device.makeBuffer(bytes: &coeR, length: MemoryLayout<Float>.size, options: MTLResourceOptions.storageModeShared)
         encoder.setBuffer(buffer1, offset: 0, index: 1)
         
         
@@ -81,8 +76,8 @@ class EncoderBuffer {
         let length = (radius * 2 + 1) * (radius * 2 + 1)
         var floatMatrix = [Float]()
         
-        for x in stride(from: -radius, through: radius, by: 1) {
-            for y in stride(from: radius, through: -radius, by: -1) {
+        for x in (-radius)...radius {
+            for y in (-radius)...radius {
                 floatMatrix.append(exp((Float(x) * Float(x) + Float(y) * Float(y)) * coeD))
             }
         }

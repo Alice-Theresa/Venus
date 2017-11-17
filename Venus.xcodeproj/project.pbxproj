@@ -18,6 +18,10 @@
 		524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */; };
 		524CD0BD1FBAFA9A0081F0E6 /* BilateralFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */; };
 		524CD11B1FBD79720081F0E6 /* MathsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD11A1FBD79720081F0E6 /* MathsGenerator.swift */; };
+		524CD11E1FBEC0C20081F0E6 /* MetalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD11D1FBEC0C20081F0E6 /* MetalManager.swift */; };
+		524CD1251FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1241FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift */; };
+		524CD12A1FBEC5820081F0E6 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */; };
+		524CD12F1FBEC9CD0081F0E6 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD12E1FBEC9CD0081F0E6 /* Converter.swift */; };
 		76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D686CB1FB09425002DDA08 /* AppDelegate.swift */; };
 		76D686D31FB09425002DDA08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D686D21FB09425002DDA08 /* Assets.xcassets */; };
 		76D686D61FB09425002DDA08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D686D41FB09425002DDA08 /* LaunchScreen.storyboard */; };
@@ -38,6 +42,10 @@
 		524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GaussianBlur.metal; sourceTree = "<group>"; };
 		524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BilateralFilter.metal; sourceTree = "<group>"; };
 		524CD11A1FBD79720081F0E6 /* MathsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathsGenerator.swift; sourceTree = "<group>"; };
+		524CD11D1FBEC0C20081F0E6 /* MetalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalManager.swift; sourceTree = "<group>"; };
+		524CD1241FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorWindow.swift; sourceTree = "<group>"; };
+		524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
+		524CD12E1FBEC9CD0081F0E6 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		76D686C81FB09425002DDA08 /* Venus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D686CB1FB09425002DDA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D686D21FB09425002DDA08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +80,7 @@
 		521F81981FB545330010CAF7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				524CD1231FBEC4A20081F0E6 /* ActivityIndicatorWindow */,
 				521F81A21FB548E00010CAF7 /* ProjectSelect */,
 				521F81971FB5452B0010CAF7 /* FilterSelect */,
 				521F81991FB545430010CAF7 /* ImageProcessing */,
@@ -101,8 +110,26 @@
 			isa = PBXGroup;
 			children = (
 				524CD11A1FBD79720081F0E6 /* MathsGenerator.swift */,
+				524CD12E1FBEC9CD0081F0E6 /* Converter.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		524CD11C1FBEC0A10081F0E6 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				524CD11D1FBEC0C20081F0E6 /* MetalManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		524CD1231FBEC4A20081F0E6 /* ActivityIndicatorWindow */ = {
+			isa = PBXGroup;
+			children = (
+				524CD1241FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift */,
+				524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */,
+			);
+			path = ActivityIndicatorWindow;
 			sourceTree = "<group>";
 		};
 		76D686BF1FB09425002DDA08 = {
@@ -125,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				76D686CB1FB09425002DDA08 /* AppDelegate.swift */,
+				524CD11C1FBEC0A10081F0E6 /* Manager */,
 				524CD0BE1FBBFAA80081F0E6 /* Utils */,
 				76DACEE71FB7F2D0005E5AE5 /* Resources */,
 				76DACEED1FB80FDE005E5AE5 /* Model */,
@@ -242,12 +270,16 @@
 				524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */,
 				521F81AA1FB59BD00010CAF7 /* ProjectSelectViewController.swift in Sources */,
 				524CD11B1FBD79720081F0E6 /* MathsGenerator.swift in Sources */,
+				524CD12F1FBEC9CD0081F0E6 /* Converter.swift in Sources */,
 				52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */,
 				521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */,
+				524CD11E1FBEC0C20081F0E6 /* MetalManager.swift in Sources */,
 				521F81961FB545220010CAF7 /* FilterSelectModel.swift in Sources */,
+				524CD12A1FBEC5820081F0E6 /* ActivityIndicatorViewController.swift in Sources */,
 				76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */,
 				76DACEE21FB7E05E005E5AE5 /* Filter.swift in Sources */,
 				521F81921FB542140010CAF7 /* FilterSelectViewModel.swift in Sources */,
+				524CD1251FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift in Sources */,
 				521F81A61FB596100010CAF7 /* Mosaic.metal in Sources */,
 				524CD0BD1FBAFA9A0081F0E6 /* BilateralFilter.metal in Sources */,
 			);
