@@ -88,6 +88,7 @@ class ImageProcessingViewController: UIViewController {
     }
     
     func applyFilter() {
+        let start = Date()
         metalManager.tempTexture = metalManager.inTexture
         for singleState in pipelineState {
             let commandBuffer: MTLCommandBuffer! = metalManager.commandQueue.makeCommandBuffer()
@@ -107,6 +108,7 @@ class ImageProcessingViewController: UIViewController {
             metalManager.tempTexture = metalManager.outTexture
         }
         metalManager.outTexture = metalManager.tempTexture
+        print(Date().timeIntervalSince(start))
     }
 
 }

@@ -11,21 +11,21 @@ using namespace metal;
 
 kernel void GaussianBlur(texture2d<float, access::read> inTexture [[texture(0)]],
                          texture2d<float, access::write> outTexture [[texture(1)]],
-                         device unsigned int *pixelSize [[buffer(0)]],
-                         device float *mat [[buffer(1)]],
+                         device unsigned int *input [[buffer(0)]],
+                         device float *coeMatrix [[buffer(1)]],
                          uint2 gid [[thread_position_in_grid]])
 {
-    const int radius = pixelSize[0];
+    const short radius = input[0];
     float3 secondSum = float3(0, 0, 0);
+    short counter = 0;
     
-    int counter = 0;
-    for (float x = -radius; x <= radius; x++) {
-        for (float y = -radius; y <= radius; y++)  {
-            float res = mat[counter];
-            uint2 loc = uint2(gid.x + x, gid.y + y);
-            float4 colorAtPixel = inTexture.read(loc);
-            secondSum = secondSum + colorAtPixel.rgb * res;
-            counter += 1;
+    for (short x = -radius; x <= radius; x++) {
+        for (short y = -radius; y <= radius; y++)  {
+            float gaussianCoe = coeMatrix[counter];
+            ushort2 pixel = ushort2(gid.x + x, gid.y + y);
+            float4 colorAtPixel = inTexture.read(pixel);
+            secondSum += colorAtPixel.rgb * gaussianCoe;
+            counter++;
         }
     }
     outTexture.write(float4(secondSum, 0), gid);
@@ -33,20 +33,18 @@ kernel void GaussianBlur(texture2d<float, access::read> inTexture [[texture(0)]]
 
 kernel void FastGaussianBlurRow(texture2d<float, access::read> inTexture [[texture(0)]],
                                 texture2d<float, access::write> outTexture [[texture(1)]],
-                                device unsigned int *pixelSize [[buffer(0)]],
-                                device float *list [[buffer(1)]],
+                                device unsigned int *input [[buffer(0)]],
+                                device float *coeMatrix [[buffer(1)]],
                                 uint2 gid [[thread_position_in_grid]])
 {
-    const int radius = pixelSize[0];
+    const short radius = input[0];
     float3 sum = float3(0, 0, 0);
     
-    int counter = 0;
-    for (float x = -radius; x <= radius; x++) {
-        float res = list[counter];
-        uint2 loc = uint2(gid.x + x, gid.y);
-        float4 colorAtPixel = inTexture.read(loc);
-        sum = sum + colorAtPixel.rgb * res;
-        counter += 1;
+    for (short x = -radius, counter = 0; x <= radius; x++, counter++) {
+        float gaussianCoe = coeMatrix[counter];
+        ushort2 pixel = ushort2(gid.x + x, gid.y);
+        float4 colorAtPixel = inTexture.read(pixel);
+        sum += colorAtPixel.rgb * gaussianCoe;
     }
     outTexture.write(float4(sum, 0), gid);
 }
@@ -54,19 +52,17 @@ kernel void FastGaussianBlurRow(texture2d<float, access::read> inTexture [[textu
 kernel void FastGaussianBlurColumn(texture2d<float, access::read> inTexture [[texture(0)]],
                                    texture2d<float, access::write> outTexture [[texture(1)]],
                                    device unsigned int *pixelSize [[buffer(0)]],
-                                   device float *list [[buffer(1)]],
+                                   device float *coeMatrix [[buffer(1)]],
                                    uint2 gid [[thread_position_in_grid]])
 {
-    const int radius = pixelSize[0];
+    const short radius = pixelSize[0];
     float3 sum = float3(0, 0, 0);
     
-    int counter = 0;
-    for (float y = -radius; y <= radius; y++) {
-        float res = list[counter];
-        uint2 loc = uint2(gid.x, gid.y + y);
-        float4 colorAtPixel = inTexture.read(loc);
-        sum = sum + colorAtPixel.rgb * res;
-        counter += 1;
+    for (short y = -radius, counter = 0; y <= radius; y++, counter++) {
+        float gaussianCoe = coeMatrix[counter];
+        ushort2 pixel = ushort2(gid.x, gid.y + y);
+        float4 colorAtPixel = inTexture.read(pixel);
+        sum += colorAtPixel.rgb * gaussianCoe;
     }
     outTexture.write(float4(sum, 0), gid);
 }
