@@ -13,7 +13,7 @@ using namespace metal;
 kernel void BilateralFilter(texture2d<float, access::read> inTexture [[texture(0)]],
                             texture2d<float, access::write> outTexture [[texture(1)]],
                             device unsigned int *pixelSize [[buffer(0)]],
-                            device float *list [[buffer(1)]],
+                            device float *coe [[buffer(1)]],
                             device float *matrix [[buffer(2)]],
                             uint2 gid [[thread_position_in_grid]])
 {
@@ -30,7 +30,7 @@ kernel void BilateralFilter(texture2d<float, access::read> inTexture [[texture(0
             uint2 pixel = uint2(gid.x + x, gid.y + y);
             float4 colorAtPixel = inTexture.read(pixel);
             
-            float closeness = exp(pow(distance(colorAtPixel.xyz, colorAtCenter.xyz), 2) * list[0]);
+            float closeness = exp(pow(distance(colorAtPixel.xyz, colorAtCenter.xyz), 2) * coe[0]);
 //            float closeness = 1 - distance(colorAtPixel.xyz, colorAtCenter.xyz) / length(float3(1,1,1));
             float spacial = matrix[counter];
             float weight = closeness * spacial;

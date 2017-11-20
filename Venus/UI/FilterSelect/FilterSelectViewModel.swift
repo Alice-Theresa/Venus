@@ -10,19 +10,29 @@ import Foundation
 
 class FilterSelectViewModel {
     
-//    let sections: [FilterSelectSection]
-    let filters: [FilterSelectItem]
+    let sections: [FilterSelectSection]
     
     init() {
-        var temp: [FilterSelectItem] = []
-
+        let RGBSkinDetectFilter = Filter(filterName: .RGBSkinDetect,
+                                         filterFunctions: [.RGBSkinDetect],
+                                         minValue: 1,
+                                         maxValue: 201,
+                                         step: 20)
+        let RGBSkinDetect = FilterSelectItem(title: .RGBSkinDetect, filter: RGBSkinDetectFilter)
+        
+        let CrCbSkinDetectFilter = Filter(filterName: .CrCbSkinDetect,
+                                          filterFunctions: [.CrCbSkinDetect],
+                                          minValue: 1,
+                                          maxValue: 201,
+                                          step: 20)
+        let CrCbSkinDetect = FilterSelectItem(title: .CrCbSkinDetect, filter: CrCbSkinDetectFilter)
+        
         let mosaicFilter = Filter(filterName: .Mosaic,
                                   filterFunctions: [.Mosaic],
                                   minValue: 1,
                                   maxValue: 100,
                                   step: 10)
         let mosaic = FilterSelectItem(title: .Mosaic, filter: mosaicFilter)
-        temp.append(mosaic)
         
         let gaussianBlurFilter = Filter(filterName: .GaussianBlur,
                                         filterFunctions: [.GaussianBlur],
@@ -30,7 +40,6 @@ class FilterSelectViewModel {
                                         maxValue: 51,
                                         step: 10)
         let gaussianBlur = FilterSelectItem(title: .GaussianBlur, filter: gaussianBlurFilter)
-        temp.append(gaussianBlur)
         
         let fastGaussianBlurFilter = Filter(filterName: .FastGaussianBlur,
                                             filterFunctions: [.FastGaussianBlurRow, .FastGaussianBlurColumn],
@@ -38,23 +47,6 @@ class FilterSelectViewModel {
                                             maxValue: 201,
                                             step: 20)
         let fastGaussianBlur = FilterSelectItem(title: .FastGaussianBlur, filter: fastGaussianBlurFilter)
-        temp.append(fastGaussianBlur)
-        
-        let RGBSkinDetectFilter = Filter(filterName: .RGBSkinDetect,
-                                            filterFunctions: [.RGBSkinDetect],
-                                            minValue: 1,
-                                            maxValue: 201,
-                                            step: 20)
-        let RGBSkinDetect = FilterSelectItem(title: .RGBSkinDetect, filter: RGBSkinDetectFilter)
-        temp.append(RGBSkinDetect)
-        
-        let CrCbSkinDetectFilter = Filter(filterName: .CrCbSkinDetect,
-                                         filterFunctions: [.CrCbSkinDetect],
-                                         minValue: 1,
-                                         maxValue: 201,
-                                         step: 20)
-        let CrCbSkinDetect = FilterSelectItem(title: .CrCbSkinDetect, filter: CrCbSkinDetectFilter)
-        temp.append(CrCbSkinDetect)
         
         let bilateralFilter = Filter(filterName: .BilateralFilter,
                                             filterFunctions: [.BilateralFilter],
@@ -62,8 +54,11 @@ class FilterSelectViewModel {
                                             maxValue: 51,
                                             step: 10)
         let bilateralBlur = FilterSelectItem(title: .BilateralFilter, filter: bilateralFilter)
-        temp.append(bilateralBlur)
         
-        filters = temp
+        let noInput = FilterSelectSection(title: "No Input", items: [RGBSkinDetect, CrCbSkinDetect])
+        let singleInput = FilterSelectSection(title: "Single Input", items: [mosaic, gaussianBlur, fastGaussianBlur])
+        let tripleInput = FilterSelectSection(title: "Triple Input", items: [bilateralBlur])
+        
+        sections = [noInput, singleInput, tripleInput]
     }
 }
