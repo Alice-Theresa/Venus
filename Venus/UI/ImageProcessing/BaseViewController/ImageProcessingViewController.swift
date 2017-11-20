@@ -10,10 +10,9 @@ import UIKit
 
 class ImageProcessingViewController: UIViewController {
 
-    // Metal
     let metalManager = MetalManager.shared
     let queue = DispatchQueue(label: "com.image.processing")
-    var filter: Filter!
+    let filter: Filter
     
     lazy var pipelineState: [MTLComputePipelineState] = {
         var pipelines = [MTLComputePipelineState]()
@@ -31,5 +30,13 @@ class ImageProcessingViewController: UIViewController {
         MTLSizeMake(Int(self.metalManager.inTexture.width) / self.threadGroupCount.width, Int(self.metalManager.inTexture.height) / self.threadGroupCount.height, 1)
     }()
     
+    init(filter: Filter) {
+        self.filter = filter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 }

@@ -17,12 +17,10 @@ class SingleParamImageProcessingVC: ImageProcessingViewController {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     
-
     var pixelSize: Int = 1
     
-    init(filter: Filter) {
-        super.init(nibName: nil, bundle: nil)
-        self.filter = filter
+    override init(filter: Filter) {
+        super.init(filter: filter)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -90,6 +88,5 @@ class SingleParamImageProcessingVC: ImageProcessingViewController {
         metalManager.outTexture = metalManager.tempTexture
         print(Date().timeIntervalSince(start))
     }
-
 
 }
