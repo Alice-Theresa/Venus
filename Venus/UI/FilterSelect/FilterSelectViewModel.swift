@@ -10,17 +10,18 @@ import Foundation
 
 class FilterSelectViewModel {
     
-    let filters: [FilterSelectModel]
+//    let sections: [FilterSelectSection]
+    let filters: [FilterSelectItem]
     
     init() {
-        var temp: [FilterSelectModel] = []
+        var temp: [FilterSelectItem] = []
 
         let mosaicFilter = Filter(filterName: .Mosaic,
                                   filterFunctions: [.Mosaic],
                                   minValue: 1,
                                   maxValue: 100,
                                   step: 10)
-        let mosaic = FilterSelectModel(title: .Mosaic, filter: mosaicFilter)
+        let mosaic = FilterSelectItem(title: .Mosaic, filter: mosaicFilter)
         temp.append(mosaic)
         
         let gaussianBlurFilter = Filter(filterName: .GaussianBlur,
@@ -28,7 +29,7 @@ class FilterSelectViewModel {
                                         minValue: 1,
                                         maxValue: 51,
                                         step: 10)
-        let gaussianBlur = FilterSelectModel(title: .GaussianBlur, filter: gaussianBlurFilter)
+        let gaussianBlur = FilterSelectItem(title: .GaussianBlur, filter: gaussianBlurFilter)
         temp.append(gaussianBlur)
         
         let fastGaussianBlurFilter = Filter(filterName: .FastGaussianBlur,
@@ -36,15 +37,31 @@ class FilterSelectViewModel {
                                             minValue: 1,
                                             maxValue: 201,
                                             step: 20)
-        let fastGaussianBlur = FilterSelectModel(title: .FastGaussianBlur, filter: fastGaussianBlurFilter)
+        let fastGaussianBlur = FilterSelectItem(title: .FastGaussianBlur, filter: fastGaussianBlurFilter)
         temp.append(fastGaussianBlur)
+        
+        let RGBSkinDetectFilter = Filter(filterName: .RGBSkinDetect,
+                                            filterFunctions: [.RGBSkinDetect],
+                                            minValue: 1,
+                                            maxValue: 201,
+                                            step: 20)
+        let RGBSkinDetect = FilterSelectItem(title: .RGBSkinDetect, filter: RGBSkinDetectFilter)
+        temp.append(RGBSkinDetect)
+        
+        let CrCbSkinDetectFilter = Filter(filterName: .CrCbSkinDetect,
+                                         filterFunctions: [.CrCbSkinDetect],
+                                         minValue: 1,
+                                         maxValue: 201,
+                                         step: 20)
+        let CrCbSkinDetect = FilterSelectItem(title: .CrCbSkinDetect, filter: CrCbSkinDetectFilter)
+        temp.append(CrCbSkinDetect)
         
         let bilateralFilter = Filter(filterName: .BilateralFilter,
                                             filterFunctions: [.BilateralFilter],
                                             minValue: 1,
                                             maxValue: 51,
                                             step: 10)
-        let bilateralBlur = FilterSelectModel(title: .BilateralFilter, filter: bilateralFilter)
+        let bilateralBlur = FilterSelectItem(title: .BilateralFilter, filter: bilateralFilter)
         temp.append(bilateralBlur)
         
         filters = temp

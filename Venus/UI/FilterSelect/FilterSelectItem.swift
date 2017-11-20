@@ -1,5 +1,5 @@
 //
-//  FilterSelectModel.swift
+//  FilterSelectItem.swift
 //  Venus
 //
 //  Created by Theresa on 2017/11/10.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FilterSelectModel {
+struct FilterSelectItem {
     
     let title: FilterName
     let filter: Filter

@@ -9,10 +9,12 @@
 import Foundation
 
 enum FilterName: String {
-    case Mosaic           = "Mosaic"
-    case GaussianBlur     = "Gaussian Blur"
-    case FastGaussianBlur = "Fast Gaussian Blur"
-    case BilateralFilter  = "Bilateral Filter"
+    case Mosaic              = "Mosaic"
+    case GaussianBlur        = "Gaussian Blur"
+    case FastGaussianBlur    = "Fast Gaussian Blur"
+    case BilateralFilter     = "Bilateral Filter"
+    case CrCbSkinDetect      = "CrCb Skin Detect"
+    case RGBSkinDetect       = "RGB Skin Detect"
 }
 
 enum FilterFunction: String {
@@ -21,6 +23,8 @@ enum FilterFunction: String {
     case FastGaussianBlurRow    = "FastGaussianBlurRow"
     case FastGaussianBlurColumn = "FastGaussianBlurColumn"
     case BilateralFilter        = "BilateralFilter"
+    case CrCbSkinDetect         = "CrCbSkinDetect"
+    case RGBSkinDetect          = "RGBSkinDetect"
 }
 
 struct Filter {
