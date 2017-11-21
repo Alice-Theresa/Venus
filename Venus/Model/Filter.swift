@@ -10,6 +10,7 @@ import Foundation
 
 enum FilterName: String {
     case Mosaic              = "Mosaic"
+    case PolkaDot = "PolkaDot"
     case GaussianBlur        = "Gaussian Blur"
     case FastGaussianBlur    = "Fast Gaussian Blur"
     case BilateralFilter     = "Bilateral Filter"
@@ -19,6 +20,7 @@ enum FilterName: String {
 
 enum FilterFunction: String {
     case Mosaic                 = "Mosaic"
+    case PolkaDot = "PolkaDot"
     case GaussianBlur           = "GaussianBlur"
     case FastGaussianBlurRow    = "FastGaussianBlurRow"
     case FastGaussianBlurColumn = "FastGaussianBlurColumn"
