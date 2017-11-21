@@ -9,18 +9,18 @@
 import Foundation
 
 enum FilterName: String {
-    case Mosaic              = "Mosaic"
-    case PolkaDot = "PolkaDot"
-    case GaussianBlur        = "Gaussian Blur"
-    case FastGaussianBlur    = "Fast Gaussian Blur"
-    case BilateralFilter     = "Bilateral Filter"
-    case CrCbSkinDetect      = "CrCb Skin Detect"
-    case RGBSkinDetect       = "RGB Skin Detect"
+    case Mosaic           = "Mosaic"
+    case PolkaDot         = "Polka Dot"
+    case GaussianBlur     = "Gaussian Blur"
+    case FastGaussianBlur = "Fast Gaussian Blur"
+    case BilateralFilter  = "Bilateral Filter"
+    case CrCbSkinDetect   = "CrCb Skin Detect"
+    case RGBSkinDetect    = "RGB Skin Detect"
 }
 
 enum FilterFunction: String {
     case Mosaic                 = "Mosaic"
-    case PolkaDot = "PolkaDot"
+    case PolkaDot               = "PolkaDot"
     case GaussianBlur           = "GaussianBlur"
     case FastGaussianBlurRow    = "FastGaussianBlurRow"
     case FastGaussianBlurColumn = "FastGaussianBlurColumn"

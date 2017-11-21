@@ -28,6 +28,11 @@ class FilterSelectViewModel {
                                   stepper: [StepperConfig(minValue: 1, maxValue: 100, step: 10)])
         let mosaic = FilterSelectItem(title: .Mosaic, filter: mosaicFilter)
         
+        let polkaDotFilter = Filter(filterName: .PolkaDot,
+                                    filterFunctions: [.PolkaDot],
+                                    stepper: [StepperConfig(minValue: 1, maxValue: 100, step: 10)])
+        let polkaDot = FilterSelectItem(title: .PolkaDot, filter: polkaDotFilter)
+        
         let gaussianBlurFilter = Filter(filterName: .GaussianBlur,
                                         filterFunctions: [.GaussianBlur],
                                         stepper: [StepperConfig(minValue: 1, maxValue: 51, step: 10)])
@@ -46,7 +51,7 @@ class FilterSelectViewModel {
         let bilateralBlur = FilterSelectItem(title: .BilateralFilter, filter: bilateralFilter)
 
         let noInput = FilterSelectSection(title: "No Input", items: [RGBSkinDetect, CrCbSkinDetect], params: .NoParamVC)
-        let singleInput = FilterSelectSection(title: "Single Input", items: [mosaic, gaussianBlur, fastGaussianBlur], params: .SingleParamVC)
+        let singleInput = FilterSelectSection(title: "Single Input", items: [mosaic, polkaDot, gaussianBlur, fastGaussianBlur], params: .SingleParamVC)
         let tripleInput = FilterSelectSection(title: "Triple Input", items: [bilateralBlur], params: .TripleParamVC)
         
         sections = [noInput, singleInput, tripleInput]

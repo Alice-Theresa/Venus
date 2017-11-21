@@ -14,7 +14,10 @@ class EncoderBuffer {
     class func setting(device: MTLDevice, encoder: MTLComputeCommandEncoder, inputValue: Int, filter: FilterName) {
         
         if case .Mosaic = filter {
-            EncoderBuffer.mosaicBuffer(device: device, encoder: encoder, inputValue: inputValue)
+            EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
+        }
+        if case .PolkaDot = filter {
+            EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
         }
         if case .GaussianBlur = filter {
             EncoderBuffer.gaussianBlurBuffer(device: device, encoder: encoder, inputValue: inputValue)
@@ -38,11 +41,7 @@ class EncoderBuffer {
         let buffer = device.makeBuffer(bytes: &input, length: MemoryLayout<Int>.size, options: MTLResourceOptions.storageModeShared)
         encoder.setBuffer(buffer, offset: 0, index: 0)
     }
-    
-    private class func mosaicBuffer(device: MTLDevice, encoder: MTLComputeCommandEncoder, inputValue: Int) {
-        EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
-    }
-    
+
     private class func gaussianBlurBuffer(device: MTLDevice, encoder: MTLComputeCommandEncoder, inputValue: Int) {
         EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: inputValue)
         

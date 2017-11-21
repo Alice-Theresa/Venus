@@ -25,8 +25,8 @@ kernel void PolkaDot(texture2d<float, access::read> inTexture [[texture(0)]],
                      uint2 gid [[thread_position_in_grid]])
 {
     const int diameter = input[0];
-    const uint ox = gid.x / diameter * diameter + 0.5 * diameter;
-    const uint oy = gid.y / diameter * diameter + 0.5 * diameter;
+    const uint ox = (gid.x / diameter) * diameter + 0.5 * diameter;
+    const uint oy = (gid.y / diameter) * diameter + 0.5 * diameter;
     const uint2 pixellateGrid = uint2(ox, oy);
     float4 colorAtPixel;
     
