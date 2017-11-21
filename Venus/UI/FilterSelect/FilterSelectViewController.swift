@@ -38,7 +38,14 @@ extension FilterSelectViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let section = viewModel.sections[indexPath.section]
         let model = section.items[indexPath.row]
-        navigationController?.pushViewController(SingleParamImageProcessingVC(filter: model.filter), animated: true)
+        switch section.params {
+        case .NoParamVC:
+            navigationController?.pushViewController(NoParamImageProcessingVC(filter: model.filter), animated: true)
+        case .SingleParamVC:
+            navigationController?.pushViewController(SingleParamImageProcessingVC(filter: model.filter), animated: true)
+        case .TripleParamVC:
+            navigationController?.pushViewController(TripleParamImageProcessingVC(filter: model.filter), animated: true)
+        }
     }
     
 }

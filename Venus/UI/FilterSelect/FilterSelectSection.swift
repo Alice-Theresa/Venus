@@ -8,9 +8,16 @@
 
 import Foundation
 
+enum ParamNumberOfVC {
+    case NoParamVC
+    case SingleParamVC
+    case TripleParamVC
+}
+
 struct FilterSelectSection {
     
     let title: String
     let items: [FilterSelectItem]
+    let params: ParamNumberOfVC
     
 }

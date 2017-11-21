@@ -14,11 +14,9 @@
 		521F81A01FB547630010CAF7 /* SingleParamImageProcessingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F819E1FB547630010CAF7 /* SingleParamImageProcessingVC.swift */; };
 		521F81A11FB547630010CAF7 /* SingleParamImageProcessingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521F819F1FB547630010CAF7 /* SingleParamImageProcessingVC.xib */; };
 		521F81A61FB596100010CAF7 /* Mosaic.metal in Sources */ = {isa = PBXBuildFile; fileRef = 521F81A51FB596100010CAF7 /* Mosaic.metal */; };
-		521F81AA1FB59BD00010CAF7 /* ProjectSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81A91FB59BD00010CAF7 /* ProjectSelectViewController.swift */; };
 		524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */; };
 		524CD0BD1FBAFA9A0081F0E6 /* BilateralFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */; };
 		524CD11B1FBD79720081F0E6 /* MathsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD11A1FBD79720081F0E6 /* MathsGenerator.swift */; };
-		524CD11E1FBEC0C20081F0E6 /* MetalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD11D1FBEC0C20081F0E6 /* MetalManager.swift */; };
 		524CD1251FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1241FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift */; };
 		524CD12A1FBEC5820081F0E6 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */; };
 		524CD12F1FBEC9CD0081F0E6 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD12E1FBEC9CD0081F0E6 /* Converter.swift */; };
@@ -45,11 +43,9 @@
 		521F819E1FB547630010CAF7 /* SingleParamImageProcessingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleParamImageProcessingVC.swift; sourceTree = "<group>"; };
 		521F819F1FB547630010CAF7 /* SingleParamImageProcessingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleParamImageProcessingVC.xib; sourceTree = "<group>"; };
 		521F81A51FB596100010CAF7 /* Mosaic.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Mosaic.metal; sourceTree = "<group>"; };
-		521F81A91FB59BD00010CAF7 /* ProjectSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectViewController.swift; sourceTree = "<group>"; };
 		524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GaussianBlur.metal; sourceTree = "<group>"; };
 		524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BilateralFilter.metal; sourceTree = "<group>"; };
 		524CD11A1FBD79720081F0E6 /* MathsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathsGenerator.swift; sourceTree = "<group>"; };
-		524CD11D1FBEC0C20081F0E6 /* MetalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalManager.swift; sourceTree = "<group>"; };
 		524CD1241FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorWindow.swift; sourceTree = "<group>"; };
 		524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
 		524CD12E1FBEC9CD0081F0E6 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
@@ -96,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				524CD1231FBEC4A20081F0E6 /* ActivityIndicatorWindow */,
-				521F81A21FB548E00010CAF7 /* ProjectSelect */,
 				521F81971FB5452B0010CAF7 /* FilterSelect */,
 				521F81991FB545430010CAF7 /* ImageProcessing */,
 			);
@@ -115,14 +110,6 @@
 			path = ImageProcessing;
 			sourceTree = "<group>";
 		};
-		521F81A21FB548E00010CAF7 /* ProjectSelect */ = {
-			isa = PBXGroup;
-			children = (
-				521F81A91FB59BD00010CAF7 /* ProjectSelectViewController.swift */,
-			);
-			path = ProjectSelect;
-			sourceTree = "<group>";
-		};
 		524CD0BE1FBBFAA80081F0E6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,14 +117,6 @@
 				524CD12E1FBEC9CD0081F0E6 /* Converter.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		524CD11C1FBEC0A10081F0E6 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				524CD11D1FBEC0C20081F0E6 /* MetalManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		524CD1231FBEC4A20081F0E6 /* ActivityIndicatorWindow */ = {
@@ -204,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				76D686CB1FB09425002DDA08 /* AppDelegate.swift */,
-				524CD11C1FBEC0A10081F0E6 /* Manager */,
 				524CD0BE1FBBFAA80081F0E6 /* Utils */,
 				76DACEE71FB7F2D0005E5AE5 /* Resources */,
 				76DACEED1FB80FDE005E5AE5 /* Model */,
@@ -324,14 +302,12 @@
 				521F81A01FB547630010CAF7 /* SingleParamImageProcessingVC.swift in Sources */,
 				7650A21F1FC30EEE007C267B /* NoParamImageProcessingVC.swift in Sources */,
 				524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */,
-				521F81AA1FB59BD00010CAF7 /* ProjectSelectViewController.swift in Sources */,
 				524CD11B1FBD79720081F0E6 /* MathsGenerator.swift in Sources */,
 				524CD12F1FBEC9CD0081F0E6 /* Converter.swift in Sources */,
 				7650A22B1FC315DA007C267B /* ImageProcessingViewController.swift in Sources */,
 				524CD1311FC2673D0081F0E6 /* SkinDetect.metal in Sources */,
 				52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */,
 				521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */,
-				524CD11E1FBEC0C20081F0E6 /* MetalManager.swift in Sources */,
 				524CD1351FC2CE890081F0E6 /* FilterSelectSection.swift in Sources */,
 				521F81961FB545220010CAF7 /* FilterSelectItem.swift in Sources */,
 				524CD12A1FBEC5820081F0E6 /* ActivityIndicatorViewController.swift in Sources */,

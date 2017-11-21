@@ -9,8 +9,21 @@
 import UIKit
 
 class ImageProcessingViewController: UIViewController {
+    
+    let device: MTLDevice! = MTLCreateSystemDefaultDevice()
+    
+    lazy var commandQueue: MTLCommandQueue! = {
+        return self.device.makeCommandQueue()
+    }()
+    
+    lazy var library: MTLLibrary! = {
+        return self.device.makeDefaultLibrary()
+    }()
+    
+    var inTexture: MTLTexture!
+    var tempTexture: MTLTexture!
+    var outTexture: MTLTexture!
 
-    let metalManager = MetalManager.shared
     let queue = DispatchQueue(label: "com.image.processing")
     let filter: Filter
     
@@ -18,8 +31,8 @@ class ImageProcessingViewController: UIViewController {
         var pipelines = [MTLComputePipelineState]()
         
         for filter in self.filter.filterFunctions {
-            let function: MTLFunction! = self.metalManager.library.makeFunction(name: filter.rawValue)
-            let pipelineState = try! self.metalManager.device.makeComputePipelineState(function: function)
+            let function: MTLFunction! = self.library.makeFunction(name: filter.rawValue)
+            let pipelineState = try! self.device.makeComputePipelineState(function: function)
             pipelines.append(pipelineState)
         }
         return pipelines
@@ -27,7 +40,7 @@ class ImageProcessingViewController: UIViewController {
     
     let threadGroupCount = MTLSizeMake(16, 16, 1)
     lazy var threadGroups: MTLSize = {
-        MTLSizeMake(Int(self.metalManager.inTexture.width) / self.threadGroupCount.width, Int(self.metalManager.inTexture.height) / self.threadGroupCount.height, 1)
+        MTLSizeMake(Int(self.inTexture.width) / self.threadGroupCount.width, Int(self.inTexture.height) / self.threadGroupCount.height, 1)
     }()
     
     init(filter: Filter) {

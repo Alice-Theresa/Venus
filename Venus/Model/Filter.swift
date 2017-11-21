@@ -31,6 +31,12 @@ struct Filter {
     
     let filterName: FilterName
     let filterFunctions: [FilterFunction]
+    let stepper: [StepperConfig]
+    
+}
+
+struct StepperConfig {
+    
     let minValue: Double
     let maxValue: Double
     let step: Double
