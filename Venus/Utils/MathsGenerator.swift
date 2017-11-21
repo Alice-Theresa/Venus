@@ -54,6 +54,19 @@ class MathsGenerator {
         return MathsGenerator.normalization(matrix: doubleMatrix, sum: sum)
     }
     
+    // 2维空间域矩阵
+    class func Spatial2DMatrix(radius: Int, sigma: Float) -> [Float] {
+        var floatMatrix = [Float]()
+        let coeD: Float = -0.5 / pow(sigma, 2)
+        
+        for x in (-radius)...radius {
+            for y in (-radius)...radius {
+                floatMatrix.append(exp((Float(x) * Float(x) + Float(y) * Float(y)) * coeD))
+            }
+        }
+        return floatMatrix
+    }
+    
     // 向量化
     class func normalization(matrix: [Double], sum: Double) -> [Float] {
         var outputMatrix = [Float]()

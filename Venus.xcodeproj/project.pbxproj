@@ -105,7 +105,7 @@
 				7650A2251FC30F0B007C267B /* NoParam */,
 				7650A2261FC30F16007C267B /* SingleParam */,
 				7650A2271FC30F1D007C267B /* TripleParam */,
-				52157AC61FB937D50045116E /* EncoderBufferSetting.swift */,
+				52C428361FC41D95006E2E43 /* BufferSetting */,
 			);
 			path = ImageProcessing;
 			sourceTree = "<group>";
@@ -126,6 +126,14 @@
 				524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */,
 			);
 			path = ActivityIndicatorWindow;
+			sourceTree = "<group>";
+		};
+		52C428361FC41D95006E2E43 /* BufferSetting */ = {
+			isa = PBXGroup;
+			children = (
+				52157AC61FB937D50045116E /* EncoderBufferSetting.swift */,
+			);
+			path = BufferSetting;
 			sourceTree = "<group>";
 		};
 		7650A2251FC30F0B007C267B /* NoParam */ = {
