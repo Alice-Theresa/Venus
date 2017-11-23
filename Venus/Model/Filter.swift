@@ -9,6 +9,7 @@
 import Foundation
 
 enum FilterName: String {
+    case Grayscale        = "Grayscale"
     case Mosaic           = "Mosaic"
     case PolkaDot         = "Polka Dot"
     case GaussianBlur     = "Gaussian Blur"
@@ -19,6 +20,7 @@ enum FilterName: String {
 }
 
 enum FilterFunction: String {
+    case Grayscale              = "Grayscale"
     case Mosaic                 = "Mosaic"
     case PolkaDot               = "PolkaDot"
     case GaussianBlur           = "GaussianBlur"

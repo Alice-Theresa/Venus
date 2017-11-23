@@ -10,9 +10,18 @@ import Foundation
 
 class FilterSelectViewModel {
     
-    let sections: [FilterSelectSection]
+    var sections: [FilterSelectSection]!
     
     init() {
+        sections = [setupNoParam(), setupSingleParam(), setupTripleParam()]
+    }
+    
+    func setupNoParam() -> FilterSelectSection {
+        let GrayscaleFilter = Filter(filterName: .Grayscale,
+                                     filterFunctions: [.Grayscale],
+                                     stepper: [])
+        let Grayscale = FilterSelectItem(title: .Grayscale, filter: GrayscaleFilter)
+        
         let RGBSkinDetectFilter = Filter(filterName: .RGBSkinDetect,
                                          filterFunctions: [.RGBSkinDetect],
                                          stepper: [])
@@ -23,6 +32,10 @@ class FilterSelectViewModel {
                                           stepper: [])
         let CrCbSkinDetect = FilterSelectItem(title: .CrCbSkinDetect, filter: CrCbSkinDetectFilter)
         
+        return FilterSelectSection(title: "No Input", items: [Grayscale, RGBSkinDetect, CrCbSkinDetect], params: .NoParamVC)
+    }
+    
+    func setupSingleParam() -> FilterSelectSection {
         let mosaicFilter = Filter(filterName: .Mosaic,
                                   filterFunctions: [.Mosaic],
                                   stepper: [StepperConfig(minValue: 1, maxValue: 100, step: 10)])
@@ -43,17 +56,18 @@ class FilterSelectViewModel {
                                             stepper: [StepperConfig(minValue: 1, maxValue: 201, step: 20)])
         let fastGaussianBlur = FilterSelectItem(title: .FastGaussianBlur, filter: fastGaussianBlurFilter)
         
+        return FilterSelectSection(title: "Single Input", items: [mosaic, polkaDot, gaussianBlur, fastGaussianBlur], params: .SingleParamVC)
+    }
+    
+    func setupTripleParam() -> FilterSelectSection {
         let bilateralFilter = Filter(filterName: .BilateralFilter,
                                      filterFunctions: [.BilateralFilter],
                                      stepper: [StepperConfig(minValue: 1, maxValue: 51, step: 10),
                                                StepperConfig(minValue: 1, maxValue: 100, step: 5),
                                                StepperConfig(minValue: 0.1, maxValue: 1, step: 0.2)])
         let bilateralBlur = FilterSelectItem(title: .BilateralFilter, filter: bilateralFilter)
-
-        let noInput = FilterSelectSection(title: "No Input", items: [RGBSkinDetect, CrCbSkinDetect], params: .NoParamVC)
-        let singleInput = FilterSelectSection(title: "Single Input", items: [mosaic, polkaDot, gaussianBlur, fastGaussianBlur], params: .SingleParamVC)
-        let tripleInput = FilterSelectSection(title: "Triple Input", items: [bilateralBlur], params: .TripleParamVC)
         
-        sections = [noInput, singleInput, tripleInput]
+        return FilterSelectSection(title: "Triple Input", items: [bilateralBlur], params: .TripleParamVC)
     }
+    
 }

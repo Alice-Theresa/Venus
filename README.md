@@ -4,6 +4,7 @@
 
 filters
 -|
+grayscale
 RGB skin detect
 CrCb skin detect
 mosaic
