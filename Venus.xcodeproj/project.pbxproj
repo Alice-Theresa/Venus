@@ -24,6 +24,7 @@
 		524CD1351FC2CE890081F0E6 /* FilterSelectSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1341FC2CE890081F0E6 /* FilterSelectSection.swift */; };
 		5260300C1FC6622C00D03FF6 /* Grayscale.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5260300B1FC6622C00D03FF6 /* Grayscale.metal */; };
 		52E403E31FC7B63F00EE1FA3 /* Gamma.metal in Sources */ = {isa = PBXBuildFile; fileRef = 52E403E21FC7B63F00EE1FA3 /* Gamma.metal */; };
+		52F8BDFA1FC807DB00BE0C96 /* Gradient.metal in Sources */ = {isa = PBXBuildFile; fileRef = 52F8BDF91FC807DB00BE0C96 /* Gradient.metal */; };
 		7650A21F1FC30EEE007C267B /* NoParamImageProcessingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650A21D1FC30EEE007C267B /* NoParamImageProcessingVC.swift */; };
 		7650A2201FC30EEE007C267B /* NoParamImageProcessingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7650A21E1FC30EEE007C267B /* NoParamImageProcessingVC.xib */; };
 		7650A2231FC30F06007C267B /* TripleParamImageProcessingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650A2211FC30F06007C267B /* TripleParamImageProcessingVC.swift */; };
@@ -55,6 +56,7 @@
 		524CD1341FC2CE890081F0E6 /* FilterSelectSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectSection.swift; sourceTree = "<group>"; };
 		5260300B1FC6622C00D03FF6 /* Grayscale.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Grayscale.metal; sourceTree = "<group>"; };
 		52E403E21FC7B63F00EE1FA3 /* Gamma.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Gamma.metal; sourceTree = "<group>"; };
+		52F8BDF91FC807DB00BE0C96 /* Gradient.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Gradient.metal; sourceTree = "<group>"; };
 		7650A21D1FC30EEE007C267B /* NoParamImageProcessingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoParamImageProcessingVC.swift; sourceTree = "<group>"; };
 		7650A21E1FC30EEE007C267B /* NoParamImageProcessingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoParamImageProcessingVC.xib; sourceTree = "<group>"; };
 		7650A2211FC30F06007C267B /* TripleParamImageProcessingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleParamImageProcessingVC.swift; sourceTree = "<group>"; };
@@ -220,11 +222,12 @@
 			isa = PBXGroup;
 			children = (
 				524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */,
+				52E403E21FC7B63F00EE1FA3 /* Gamma.metal */,
 				524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */,
+				52F8BDF91FC807DB00BE0C96 /* Gradient.metal */,
 				5260300B1FC6622C00D03FF6 /* Grayscale.metal */,
 				521F81A51FB596100010CAF7 /* Mosaic.metal */,
 				524CD1301FC2673D0081F0E6 /* SkinDetect.metal */,
-				52E403E21FC7B63F00EE1FA3 /* Gamma.metal */,
 			);
 			path = Shader;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				521F81A01FB547630010CAF7 /* SingleParamImageProcessingVC.swift in Sources */,
 				7650A21F1FC30EEE007C267B /* NoParamImageProcessingVC.swift in Sources */,
 				524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */,
+				52F8BDFA1FC807DB00BE0C96 /* Gradient.metal in Sources */,
 				524CD11B1FBD79720081F0E6 /* MathsGenerator.swift in Sources */,
 				524CD12F1FBEC9CD0081F0E6 /* Converter.swift in Sources */,
 				7650A22B1FC315DA007C267B /* ImageProcessingViewController.swift in Sources */,

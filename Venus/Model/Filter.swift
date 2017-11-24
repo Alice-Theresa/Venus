@@ -12,6 +12,7 @@ enum FilterName: String {
     case Grayscale      = "Grayscale"
     case CrCbSkinDetect = "CrCb Skin Detect"
     case RGBSkinDetect  = "RGB Skin Detect"
+    case Gradient       = "Gradient"
     
     case Gamma            = "Gamma"
     case Mosaic           = "Mosaic"
@@ -26,6 +27,7 @@ enum FilterFunction: String {
     case Grayscale      = "Grayscale"
     case CrCbSkinDetect = "CrCbSkinDetect"
     case RGBSkinDetect  = "RGBSkinDetect"
+    case Gradient       = "Gradient"
     
     case Gamma                  = "Gamma"
     case Mosaic                 = "Mosaic"

@@ -17,6 +17,11 @@ class FilterSelectViewModel {
     }
     
     func setupNoParam() -> FilterSelectSection {
+        let GradientFilter = Filter(filterName: .Gradient,
+                                     filterFunctions: [.Gradient],
+                                     stepper: [])
+        let Gradient = FilterSelectItem(title: .Gradient, filter: GradientFilter)
+        
         let GrayscaleFilter = Filter(filterName: .Grayscale,
                                      filterFunctions: [.Grayscale],
                                      stepper: [])
@@ -32,7 +37,7 @@ class FilterSelectViewModel {
                                           stepper: [])
         let CrCbSkinDetect = FilterSelectItem(title: .CrCbSkinDetect, filter: CrCbSkinDetectFilter)
         
-        return FilterSelectSection(title: "No Input", items: [Grayscale, RGBSkinDetect, CrCbSkinDetect], params: .NoParamVC)
+        return FilterSelectSection(title: "No Input", items: [Gradient, Grayscale, RGBSkinDetect, CrCbSkinDetect], params: .NoParamVC)
     }
     
     func setupSingleParam() -> FilterSelectSection {
