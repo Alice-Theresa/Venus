@@ -28,16 +28,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0V-MW-beJ">
-                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                     <subviews>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minimumValue="0.10000000000000001" maximumValue="1" stepValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="wi3-wg-c62">
-                            <rect key="frame" x="231" y="11" width="94" height="29"/>
+                            <rect key="frame" x="231" y="6" width="94" height="29"/>
                             <connections>
                                 <action selector="changeValue3:" destination="-1" eventType="valueChanged" id="Oc9-69-spP"/>
                             </connections>
                         </stepper>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="σ R: 0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1q-mq-01p">
-                            <rect key="frame" x="50" y="14.5" width="56" height="21"/>
+                            <rect key="frame" x="50" y="9.5" width="56" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -47,22 +47,22 @@
                     <constraints>
                         <constraint firstItem="v1q-mq-01p" firstAttribute="leading" secondItem="h0V-MW-beJ" secondAttribute="leading" constant="50" id="8f8-Fk-tC6"/>
                         <constraint firstItem="v1q-mq-01p" firstAttribute="centerY" secondItem="h0V-MW-beJ" secondAttribute="centerY" id="Iee-sb-gu3"/>
-                        <constraint firstAttribute="height" constant="50" id="Oe2-qW-CLs"/>
+                        <constraint firstAttribute="height" constant="40" id="Oe2-qW-CLs"/>
                         <constraint firstAttribute="trailing" secondItem="wi3-wg-c62" secondAttribute="trailing" constant="50" id="dQI-iA-sR3"/>
                         <constraint firstItem="wi3-wg-c62" firstAttribute="centerY" secondItem="h0V-MW-beJ" secondAttribute="centerY" id="qLy-nB-UdL"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6D2-6S-6Al">
-                    <rect key="frame" x="0.0" y="567" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="587" width="375" height="40"/>
                     <subviews>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="50" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="e40-Gf-xQi">
-                            <rect key="frame" x="231" y="11" width="94" height="29"/>
+                            <rect key="frame" x="231" y="6" width="94" height="29"/>
                             <connections>
                                 <action selector="changeValue2:" destination="-1" eventType="valueChanged" id="KHP-X2-IDQ"/>
                             </connections>
                         </stepper>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="σ D: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05l-q2-KfA">
-                            <rect key="frame" x="50" y="14.5" width="44" height="21"/>
+                            <rect key="frame" x="50" y="9.5" width="44" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -71,23 +71,23 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="05l-q2-KfA" firstAttribute="centerY" secondItem="6D2-6S-6Al" secondAttribute="centerY" id="0fH-XN-jAF"/>
-                        <constraint firstAttribute="height" constant="50" id="Air-DG-yYa"/>
+                        <constraint firstAttribute="height" constant="40" id="Air-DG-yYa"/>
                         <constraint firstItem="05l-q2-KfA" firstAttribute="leading" secondItem="6D2-6S-6Al" secondAttribute="leading" constant="50" id="HFe-jZ-ss5"/>
                         <constraint firstAttribute="trailing" secondItem="e40-Gf-xQi" secondAttribute="trailing" constant="50" id="SL9-1e-aNU"/>
                         <constraint firstItem="e40-Gf-xQi" firstAttribute="centerY" secondItem="6D2-6S-6Al" secondAttribute="centerY" id="iMR-hx-xex"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pB-4h-UFs">
-                    <rect key="frame" x="0.0" y="517" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="547" width="375" height="40"/>
                     <subviews>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="82Z-GT-GEe">
-                            <rect key="frame" x="231" y="11" width="94" height="29"/>
+                            <rect key="frame" x="231" y="6" width="94" height="29"/>
                             <connections>
                                 <action selector="changeValue1:" destination="-1" eventType="valueChanged" id="dqV-Fm-WHj"/>
                             </connections>
                         </stepper>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="radius: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFR-2Y-wkL">
-                            <rect key="frame" x="50" y="14.5" width="67" height="21"/>
+                            <rect key="frame" x="50" y="9.5" width="67" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -97,13 +97,13 @@
                     <constraints>
                         <constraint firstItem="82Z-GT-GEe" firstAttribute="centerY" secondItem="2pB-4h-UFs" secondAttribute="centerY" id="BHc-6W-tK3"/>
                         <constraint firstAttribute="trailing" secondItem="82Z-GT-GEe" secondAttribute="trailing" constant="50" id="KXe-ty-X3m"/>
-                        <constraint firstAttribute="height" constant="50" id="aqs-wg-qM3"/>
+                        <constraint firstAttribute="height" constant="40" id="aqs-wg-qM3"/>
                         <constraint firstItem="uFR-2Y-wkL" firstAttribute="leading" secondItem="2pB-4h-UFs" secondAttribute="leading" constant="50" id="eOr-ed-Brs"/>
                         <constraint firstItem="uFR-2Y-wkL" firstAttribute="centerY" secondItem="2pB-4h-UFs" secondAttribute="centerY" id="y3w-1F-f6b"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZ9-MI-eGr">
-                    <rect key="frame" x="0.0" y="20" width="375" height="497"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="527"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

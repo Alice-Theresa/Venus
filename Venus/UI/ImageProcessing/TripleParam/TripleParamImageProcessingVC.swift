@@ -19,9 +19,9 @@ class TripleParamImageProcessingVC: ImageProcessingViewController {
     @IBOutlet weak var stepper3: UIStepper!
     
     let image = UIImage(named: "Beauty.jpg")!
-    var input1: Int = 1
-    var input2: Float = 1
-    var input3: Float = 1
+    var input1: Double = 1
+    var input2: Double = 1
+    var input3: Double = 1
     
     override init(filter: Filter) {
         super.init(filter: filter)
@@ -61,7 +61,7 @@ class TripleParamImageProcessingVC: ImageProcessingViewController {
     
     @IBAction func changeValue1(_ sender: Any) {
         if let stepper = sender as? UIStepper {
-            input1 = Int(stepper.value)
+            input1 = stepper.value
             valueLabel1.text = "radius: \(input1)"
             imageProcessing()
         }
@@ -69,7 +69,7 @@ class TripleParamImageProcessingVC: ImageProcessingViewController {
     
     @IBAction func changeValue2(_ sender: Any) {
         if let stepper = sender as? UIStepper {
-            input2 = Float(stepper.value)
+            input2 = stepper.value
             valueLabel2.text = "σ D: \(input2)"
             imageProcessing()
         }
@@ -77,7 +77,7 @@ class TripleParamImageProcessingVC: ImageProcessingViewController {
     
     @IBAction func changeValue3(_ sender: Any) {
         if let stepper = sender as? UIStepper {
-            input3 = Float(stepper.value)
+            input3 = stepper.value
             valueLabel3.text = "σ R: \(input3)"
             imageProcessing()
         }

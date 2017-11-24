@@ -7,6 +7,7 @@ filters
 grayscale
 RGB skin detect
 CrCb skin detect
+gamma
 mosaic
 polka dot
 gaussian blur (2D-matrix)

@@ -36,6 +36,11 @@ class FilterSelectViewModel {
     }
     
     func setupSingleParam() -> FilterSelectSection {
+        let gammaFilter = Filter(filterName: .Gamma,
+                                 filterFunctions: [.Gamma],
+                                 stepper: [StepperConfig(minValue: 0, maxValue: 3, step: 0.2)])
+        let gamma = FilterSelectItem(title: .Gamma, filter: gammaFilter)
+        
         let mosaicFilter = Filter(filterName: .Mosaic,
                                   filterFunctions: [.Mosaic],
                                   stepper: [StepperConfig(minValue: 1, maxValue: 100, step: 10)])
@@ -56,7 +61,7 @@ class FilterSelectViewModel {
                                             stepper: [StepperConfig(minValue: 1, maxValue: 201, step: 20)])
         let fastGaussianBlur = FilterSelectItem(title: .FastGaussianBlur, filter: fastGaussianBlurFilter)
         
-        return FilterSelectSection(title: "Single Input", items: [mosaic, polkaDot, gaussianBlur, fastGaussianBlur], params: .SingleParamVC)
+        return FilterSelectSection(title: "Single Input", items: [gamma, mosaic, polkaDot, gaussianBlur, fastGaussianBlur], params: .SingleParamVC)
     }
     
     func setupTripleParam() -> FilterSelectSection {

@@ -12,7 +12,7 @@ using namespace metal;
 
 kernel void BilateralFilter(texture2d<float, access::read> inTexture [[texture(0)]],
                             texture2d<float, access::write> outTexture [[texture(1)]],
-                            device unsigned int *input [[buffer(0)]],
+                            device float *input [[buffer(0)]],
                             device float *coe [[buffer(1)]],
                             device float *matrix [[buffer(2)]],
                             uint2 gid [[thread_position_in_grid]])

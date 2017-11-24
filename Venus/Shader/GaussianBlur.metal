@@ -11,7 +11,7 @@ using namespace metal;
 
 kernel void GaussianBlur(texture2d<float, access::read> inTexture [[texture(0)]],
                          texture2d<float, access::write> outTexture [[texture(1)]],
-                         device unsigned int *input [[buffer(0)]],
+                         device float *input [[buffer(0)]],
                          device float *coeMatrix [[buffer(1)]],
                          uint2 gid [[thread_position_in_grid]])
 {
@@ -33,7 +33,7 @@ kernel void GaussianBlur(texture2d<float, access::read> inTexture [[texture(0)]]
 
 kernel void FastGaussianBlurRow(texture2d<float, access::read> inTexture [[texture(0)]],
                                 texture2d<float, access::write> outTexture [[texture(1)]],
-                                device unsigned int *input [[buffer(0)]],
+                                device float *input [[buffer(0)]],
                                 device float *coeMatrix [[buffer(1)]],
                                 uint2 gid [[thread_position_in_grid]])
 {
@@ -51,7 +51,7 @@ kernel void FastGaussianBlurRow(texture2d<float, access::read> inTexture [[textu
 
 kernel void FastGaussianBlurColumn(texture2d<float, access::read> inTexture [[texture(0)]],
                                    texture2d<float, access::write> outTexture [[texture(1)]],
-                                   device unsigned int *pixelSize [[buffer(0)]],
+                                   device float *pixelSize [[buffer(0)]],
                                    device float *coeMatrix [[buffer(1)]],
                                    uint2 gid [[thread_position_in_grid]])
 {

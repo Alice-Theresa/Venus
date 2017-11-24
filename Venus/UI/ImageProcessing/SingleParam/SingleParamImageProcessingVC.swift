@@ -18,7 +18,7 @@ class SingleParamImageProcessingVC: ImageProcessingViewController {
     @IBOutlet weak var stepper: UIStepper!
     
     let image = UIImage(named: "Beauty.jpg")!
-    var pixelSize: Int = 1
+    var pixelSize: Double = 1
     
     override init(filter: Filter) {
         super.init(filter: filter)
@@ -50,7 +50,7 @@ class SingleParamImageProcessingVC: ImageProcessingViewController {
 
     @IBAction func changeValue(_ sender: Any) {
         if let stepper = sender as? UIStepper {
-            pixelSize = Int(stepper.value)
+            pixelSize = stepper.value
             valueLabel.text = "radius: \(pixelSize)"
             ActivityIndicatorWindow.show()
             queue.async {
