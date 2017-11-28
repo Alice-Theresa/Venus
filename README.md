@@ -1,9 +1,10 @@
 # Venus
 
-### Image processing using Metal
+### Image / Video processing using Metal
 
-filters
+image filters
 -|
+gradient
 grayscale
 RGB skin detect
 CrCb skin detect

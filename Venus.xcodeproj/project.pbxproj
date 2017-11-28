@@ -23,6 +23,12 @@
 		524CD1311FC2673D0081F0E6 /* SkinDetect.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1301FC2673D0081F0E6 /* SkinDetect.metal */; };
 		524CD1351FC2CE890081F0E6 /* FilterSelectSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1341FC2CE890081F0E6 /* FilterSelectSection.swift */; };
 		5260300C1FC6622C00D03FF6 /* Grayscale.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5260300B1FC6622C00D03FF6 /* Grayscale.metal */; };
+		52CC3BED1FCD627E0019682E /* ProjectSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC3BEC1FCD627E0019682E /* ProjectSelectViewController.swift */; };
+		52CC3BEF1FCD62E40019682E /* ProjectSelectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC3BEE1FCD62E40019682E /* ProjectSelectItem.swift */; };
+		52CC3BF11FCD62F80019682E /* ProjectSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC3BF01FCD62F80019682E /* ProjectSelectViewModel.swift */; };
+		52CC3BF61FCD68430019682E /* VideoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC3BF51FCD68430019682E /* VideoProvider.swift */; };
+		52CC3BF91FCD6F1D0019682E /* VideoProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC3BF71FCD6F1D0019682E /* VideoProcessingViewController.swift */; };
+		52CC3BFA1FCD6F1D0019682E /* VideoProcessingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CC3BF81FCD6F1D0019682E /* VideoProcessingViewController.xib */; };
 		52E403E31FC7B63F00EE1FA3 /* Gamma.metal in Sources */ = {isa = PBXBuildFile; fileRef = 52E403E21FC7B63F00EE1FA3 /* Gamma.metal */; };
 		52F8BDFA1FC807DB00BE0C96 /* Gradient.metal in Sources */ = {isa = PBXBuildFile; fileRef = 52F8BDF91FC807DB00BE0C96 /* Gradient.metal */; };
 		7650A21F1FC30EEE007C267B /* NoParamImageProcessingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650A21D1FC30EEE007C267B /* NoParamImageProcessingVC.swift */; };
@@ -55,6 +61,12 @@
 		524CD1301FC2673D0081F0E6 /* SkinDetect.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SkinDetect.metal; sourceTree = "<group>"; };
 		524CD1341FC2CE890081F0E6 /* FilterSelectSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectSection.swift; sourceTree = "<group>"; };
 		5260300B1FC6622C00D03FF6 /* Grayscale.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Grayscale.metal; sourceTree = "<group>"; };
+		52CC3BEC1FCD627E0019682E /* ProjectSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectViewController.swift; sourceTree = "<group>"; };
+		52CC3BEE1FCD62E40019682E /* ProjectSelectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectItem.swift; sourceTree = "<group>"; };
+		52CC3BF01FCD62F80019682E /* ProjectSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectViewModel.swift; sourceTree = "<group>"; };
+		52CC3BF51FCD68430019682E /* VideoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProvider.swift; sourceTree = "<group>"; };
+		52CC3BF71FCD6F1D0019682E /* VideoProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProcessingViewController.swift; sourceTree = "<group>"; };
+		52CC3BF81FCD6F1D0019682E /* VideoProcessingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoProcessingViewController.xib; sourceTree = "<group>"; };
 		52E403E21FC7B63F00EE1FA3 /* Gamma.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Gamma.metal; sourceTree = "<group>"; };
 		52F8BDF91FC807DB00BE0C96 /* Gradient.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Gradient.metal; sourceTree = "<group>"; };
 		7650A21D1FC30EEE007C267B /* NoParamImageProcessingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoParamImageProcessingVC.swift; sourceTree = "<group>"; };
@@ -98,8 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				524CD1231FBEC4A20081F0E6 /* ActivityIndicatorWindow */,
+				52CC3BEB1FCD625B0019682E /* ProjectSelect */,
 				521F81971FB5452B0010CAF7 /* FilterSelect */,
 				521F81991FB545430010CAF7 /* ImageProcessing */,
+				52CC3BF21FCD65190019682E /* VideoProcessing */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -140,6 +154,26 @@
 				52157AC61FB937D50045116E /* EncoderBufferSetting.swift */,
 			);
 			path = BufferSetting;
+			sourceTree = "<group>";
+		};
+		52CC3BEB1FCD625B0019682E /* ProjectSelect */ = {
+			isa = PBXGroup;
+			children = (
+				52CC3BEC1FCD627E0019682E /* ProjectSelectViewController.swift */,
+				52CC3BF01FCD62F80019682E /* ProjectSelectViewModel.swift */,
+				52CC3BEE1FCD62E40019682E /* ProjectSelectItem.swift */,
+			);
+			path = ProjectSelect;
+			sourceTree = "<group>";
+		};
+		52CC3BF21FCD65190019682E /* VideoProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				52CC3BF71FCD6F1D0019682E /* VideoProcessingViewController.swift */,
+				52CC3BF81FCD6F1D0019682E /* VideoProcessingViewController.xib */,
+				52CC3BF51FCD68430019682E /* VideoProvider.swift */,
+			);
+			path = VideoProcessing;
 			sourceTree = "<group>";
 		};
 		7650A2251FC30F0B007C267B /* NoParam */ = {
@@ -306,6 +340,7 @@
 				7650A2201FC30EEE007C267B /* NoParamImageProcessingVC.xib in Resources */,
 				521F81A11FB547630010CAF7 /* SingleParamImageProcessingVC.xib in Resources */,
 				7650A2241FC30F06007C267B /* TripleParamImageProcessingVC.xib in Resources */,
+				52CC3BFA1FCD6F1D0019682E /* VideoProcessingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +358,7 @@
 				524CD11B1FBD79720081F0E6 /* MathsGenerator.swift in Sources */,
 				524CD12F1FBEC9CD0081F0E6 /* Converter.swift in Sources */,
 				7650A22B1FC315DA007C267B /* ImageProcessingViewController.swift in Sources */,
+				52CC3BF11FCD62F80019682E /* ProjectSelectViewModel.swift in Sources */,
 				524CD1311FC2673D0081F0E6 /* SkinDetect.metal in Sources */,
 				52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */,
 				521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */,
@@ -330,7 +366,11 @@
 				521F81961FB545220010CAF7 /* FilterSelectItem.swift in Sources */,
 				5260300C1FC6622C00D03FF6 /* Grayscale.metal in Sources */,
 				524CD12A1FBEC5820081F0E6 /* ActivityIndicatorViewController.swift in Sources */,
+				52CC3BED1FCD627E0019682E /* ProjectSelectViewController.swift in Sources */,
+				52CC3BF91FCD6F1D0019682E /* VideoProcessingViewController.swift in Sources */,
 				76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */,
+				52CC3BF61FCD68430019682E /* VideoProvider.swift in Sources */,
+				52CC3BEF1FCD62E40019682E /* ProjectSelectItem.swift in Sources */,
 				76DACEE21FB7E05E005E5AE5 /* Filter.swift in Sources */,
 				7650A2231FC30F06007C267B /* TripleParamImageProcessingVC.swift in Sources */,
 				521F81921FB542140010CAF7 /* FilterSelectViewModel.swift in Sources */,
