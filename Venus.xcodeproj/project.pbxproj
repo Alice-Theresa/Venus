@@ -36,6 +36,7 @@
 		7650A2231FC30F06007C267B /* TripleParamImageProcessingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650A2211FC30F06007C267B /* TripleParamImageProcessingVC.swift */; };
 		7650A2241FC30F06007C267B /* TripleParamImageProcessingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7650A2221FC30F06007C267B /* TripleParamImageProcessingVC.xib */; };
 		7650A22B1FC315DA007C267B /* ImageProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7650A22A1FC315DA007C267B /* ImageProcessingViewController.swift */; };
+		7662A8991FCD9B3700BFA789 /* Beauty.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7662A8981FCD9B3700BFA789 /* Beauty.metal */; };
 		76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D686CB1FB09425002DDA08 /* AppDelegate.swift */; };
 		76D686D31FB09425002DDA08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D686D21FB09425002DDA08 /* Assets.xcassets */; };
 		76D686D61FB09425002DDA08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D686D41FB09425002DDA08 /* LaunchScreen.storyboard */; };
@@ -74,6 +75,7 @@
 		7650A2211FC30F06007C267B /* TripleParamImageProcessingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleParamImageProcessingVC.swift; sourceTree = "<group>"; };
 		7650A2221FC30F06007C267B /* TripleParamImageProcessingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripleParamImageProcessingVC.xib; sourceTree = "<group>"; };
 		7650A22A1FC315DA007C267B /* ImageProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingViewController.swift; sourceTree = "<group>"; };
+		7662A8981FCD9B3700BFA789 /* Beauty.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Beauty.metal; sourceTree = "<group>"; };
 		76D686C81FB09425002DDA08 /* Venus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D686CB1FB09425002DDA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D686D21FB09425002DDA08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				5260300B1FC6622C00D03FF6 /* Grayscale.metal */,
 				521F81A51FB596100010CAF7 /* Mosaic.metal */,
 				524CD1301FC2673D0081F0E6 /* SkinDetect.metal */,
+				7662A8981FCD9B3700BFA789 /* Beauty.metal */,
 			);
 			path = Shader;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				521F81961FB545220010CAF7 /* FilterSelectItem.swift in Sources */,
 				5260300C1FC6622C00D03FF6 /* Grayscale.metal in Sources */,
 				524CD12A1FBEC5820081F0E6 /* ActivityIndicatorViewController.swift in Sources */,
+				7662A8991FCD9B3700BFA789 /* Beauty.metal in Sources */,
 				52CC3BED1FCD627E0019682E /* ProjectSelectViewController.swift in Sources */,
 				52CC3BF91FCD6F1D0019682E /* VideoProcessingViewController.swift in Sources */,
 				76D686CC1FB09425002DDA08 /* AppDelegate.swift in Sources */,
