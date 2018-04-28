@@ -36,7 +36,9 @@ class EncoderBuffer {
         if case .BilateralFilter = filter {
             EncoderBuffer.BilateralBuffer(device: device, encoder: encoder, input1: Float(input1), input2: Float(input2), input3: Float(input3))
         }
-        
+        if case .GuideFilter = filter {
+            EncoderBuffer.GuideBuffer(device: device, encoder: encoder, input1: Float(input1), input2: Float(input2), input3: Float(input3))
+        }
     }
     
     // MARK: private
@@ -84,6 +86,16 @@ class EncoderBuffer {
         
         let buffer2 = device.makeBuffer(bytes: &floatMatrix, length: MemoryLayout<Float>.size * length, options: MTLResourceOptions.storageModeShared)
         encoder.setBuffer(buffer2, offset: 0, index: 2)
+    }
+    
+    private class func GuideBuffer(device: MTLDevice, encoder: MTLComputeCommandEncoder, input1: Float, input2: Float, input3: Float) {
+        EncoderBuffer.basicBuffer(device: device, encoder: encoder, inputValue: input1)
+        
+        let sigmaR = input3  // 值域
+        var coeR = -0.5 / pow(sigmaR, 2)
+        
+        let buffer1 = device.makeBuffer(bytes: &coeR, length: MemoryLayout<Float>.size, options: MTLResourceOptions.storageModeShared)
+        encoder.setBuffer(buffer1, offset: 0, index: 1)
     }
     
 }

@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157AC61FB937D50045116E /* EncoderBufferSetting.swift */; };
+		5216423D2094250D00331CF3 /* BilateralFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5216423C2094250D00331CF3 /* BilateralFilter.metal */; };
 		521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F818F1FB541FB0010CAF7 /* FilterSelectViewController.swift */; };
 		521F81921FB542140010CAF7 /* FilterSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81911FB542140010CAF7 /* FilterSelectViewModel.swift */; };
 		521F81961FB545220010CAF7 /* FilterSelectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81951FB545220010CAF7 /* FilterSelectItem.swift */; };
 		521F81A01FB547630010CAF7 /* SingleParamImageProcessingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F819E1FB547630010CAF7 /* SingleParamImageProcessingVC.swift */; };
 		521F81A11FB547630010CAF7 /* SingleParamImageProcessingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521F819F1FB547630010CAF7 /* SingleParamImageProcessingVC.xib */; };
 		521F81A61FB596100010CAF7 /* Mosaic.metal in Sources */ = {isa = PBXBuildFile; fileRef = 521F81A51FB596100010CAF7 /* Mosaic.metal */; };
+		524A9B70208EE38700E58097 /* GuideFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524A9B6F208EE38700E58097 /* GuideFilter.metal */; };
 		524CD0BB1FBAFA620081F0E6 /* GaussianBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */; };
-		524CD0BD1FBAFA9A0081F0E6 /* BilateralFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */; };
 		524CD11B1FBD79720081F0E6 /* MathsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD11A1FBD79720081F0E6 /* MathsGenerator.swift */; };
 		524CD1251FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1241FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift */; };
 		524CD12A1FBEC5820081F0E6 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */; };
@@ -47,14 +48,15 @@
 
 /* Begin PBXFileReference section */
 		52157AC61FB937D50045116E /* EncoderBufferSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderBufferSetting.swift; sourceTree = "<group>"; };
+		5216423C2094250D00331CF3 /* BilateralFilter.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BilateralFilter.metal; sourceTree = "<group>"; };
 		521F818F1FB541FB0010CAF7 /* FilterSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectViewController.swift; sourceTree = "<group>"; };
 		521F81911FB542140010CAF7 /* FilterSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectViewModel.swift; sourceTree = "<group>"; };
 		521F81951FB545220010CAF7 /* FilterSelectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectItem.swift; sourceTree = "<group>"; };
 		521F819E1FB547630010CAF7 /* SingleParamImageProcessingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleParamImageProcessingVC.swift; sourceTree = "<group>"; };
 		521F819F1FB547630010CAF7 /* SingleParamImageProcessingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleParamImageProcessingVC.xib; sourceTree = "<group>"; };
 		521F81A51FB596100010CAF7 /* Mosaic.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Mosaic.metal; sourceTree = "<group>"; };
+		524A9B6F208EE38700E58097 /* GuideFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GuideFilter.metal; sourceTree = "<group>"; };
 		524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GaussianBlur.metal; sourceTree = "<group>"; };
-		524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BilateralFilter.metal; sourceTree = "<group>"; };
 		524CD11A1FBD79720081F0E6 /* MathsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathsGenerator.swift; sourceTree = "<group>"; };
 		524CD1241FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorWindow.swift; sourceTree = "<group>"; };
 		524CD1281FBEC5820081F0E6 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -257,14 +259,15 @@
 		76DACEE81FB7FA4C005E5AE5 /* Shader */ = {
 			isa = PBXGroup;
 			children = (
-				524CD0BC1FBAFA9A0081F0E6 /* BilateralFilter.metal */,
 				52E403E21FC7B63F00EE1FA3 /* Gamma.metal */,
 				524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */,
+				5216423C2094250D00331CF3 /* BilateralFilter.metal */,
 				52F8BDF91FC807DB00BE0C96 /* Gradient.metal */,
 				5260300B1FC6622C00D03FF6 /* Grayscale.metal */,
 				521F81A51FB596100010CAF7 /* Mosaic.metal */,
 				524CD1301FC2673D0081F0E6 /* SkinDetect.metal */,
 				7662A8981FCD9B3700BFA789 /* Beauty.metal */,
+				524A9B6F208EE38700E58097 /* GuideFilter.metal */,
 			);
 			path = Shader;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				524CD1311FC2673D0081F0E6 /* SkinDetect.metal in Sources */,
 				52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */,
 				521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */,
+				5216423D2094250D00331CF3 /* BilateralFilter.metal in Sources */,
 				524CD1351FC2CE890081F0E6 /* FilterSelectSection.swift in Sources */,
 				521F81961FB545220010CAF7 /* FilterSelectItem.swift in Sources */,
 				5260300C1FC6622C00D03FF6 /* Grayscale.metal in Sources */,
@@ -378,9 +382,9 @@
 				76DACEE21FB7E05E005E5AE5 /* Filter.swift in Sources */,
 				7650A2231FC30F06007C267B /* TripleParamImageProcessingVC.swift in Sources */,
 				521F81921FB542140010CAF7 /* FilterSelectViewModel.swift in Sources */,
+				524A9B70208EE38700E58097 /* GuideFilter.metal in Sources */,
 				524CD1251FBEC4D60081F0E6 /* ActivityIndicatorWindow.swift in Sources */,
 				521F81A61FB596100010CAF7 /* Mosaic.metal in Sources */,
-				524CD0BD1FBAFA9A0081F0E6 /* BilateralFilter.metal in Sources */,
 				52E403E31FC7B63F00EE1FA3 /* Gamma.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,7 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJX3H8KBAF;
+				DEVELOPMENT_TEAM = ARTH5X7FEM;
 				INFOPLIST_FILE = Venus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Carolar.Venus;
@@ -526,7 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJX3H8KBAF;
+				DEVELOPMENT_TEAM = ARTH5X7FEM;
 				INFOPLIST_FILE = Venus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Carolar.Venus;

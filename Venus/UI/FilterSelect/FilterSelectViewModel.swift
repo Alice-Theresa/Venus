@@ -77,7 +77,14 @@ class FilterSelectViewModel {
                                                StepperConfig(minValue: 0.1, maxValue: 1, step: 0.2)])
         let bilateralBlur = FilterSelectItem(title: .BilateralFilter, filter: bilateralFilter)
         
-        return FilterSelectSection(title: "Triple Input", items: [bilateralBlur], params: .TripleParamVC)
+        let guideFilter = Filter(filterName: .GuideFilter,
+                                 filterFunctions: [.GuidedFilter],
+                                 stepper: [StepperConfig(minValue: 1, maxValue: 51, step: 5),
+                                           StepperConfig(minValue: 1, maxValue: 100, step: 5),
+                                           StepperConfig(minValue: 0.01, maxValue: 0.2, step: 0.01)])
+        let guideFilterBlur = FilterSelectItem(title: .GuideFilter, filter: guideFilter)
+        
+        return FilterSelectSection(title: "Triple Input", items: [bilateralBlur, guideFilterBlur], params: .TripleParamVC)
     }
     
 }
