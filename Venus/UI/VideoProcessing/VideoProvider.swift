@@ -35,7 +35,7 @@ class VideoProvider: NSObject {
     }
     
     func initializeCaptureSessionSuccess() -> Bool {
-        captureSession.sessionPreset = AVCaptureSession.Preset.iFrame1280x720
+        captureSession.sessionPreset = AVCaptureSession.Preset.hd1920x1080
         guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             print("Unable to access camera.")
             return false
@@ -84,10 +84,9 @@ class VideoProvider: NSObject {
 extension VideoProvider: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        connection.videoOrientation = AVCaptureVideoOrientation(rawValue: UIApplication.shared.statusBarOrientation.rawValue)!
+        connection.videoOrientation = .portrait
         
-        guard
-            let cameraTextureCache = textureCache,
+        guard let cameraTextureCache = textureCache,
             let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
 
         var cameraTexture: CVMetalTexture?

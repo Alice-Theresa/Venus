@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52157AC61FB937D50045116E /* EncoderBufferSetting.swift */; };
-		5216423D2094250D00331CF3 /* BilateralFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5216423C2094250D00331CF3 /* BilateralFilter.metal */; };
 		521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F818F1FB541FB0010CAF7 /* FilterSelectViewController.swift */; };
 		521F81921FB542140010CAF7 /* FilterSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81911FB542140010CAF7 /* FilterSelectViewModel.swift */; };
 		521F81961FB545220010CAF7 /* FilterSelectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F81951FB545220010CAF7 /* FilterSelectItem.swift */; };
@@ -48,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		52157AC61FB937D50045116E /* EncoderBufferSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderBufferSetting.swift; sourceTree = "<group>"; };
-		5216423C2094250D00331CF3 /* BilateralFilter.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BilateralFilter.metal; sourceTree = "<group>"; };
 		521F818F1FB541FB0010CAF7 /* FilterSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectViewController.swift; sourceTree = "<group>"; };
 		521F81911FB542140010CAF7 /* FilterSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectViewModel.swift; sourceTree = "<group>"; };
 		521F81951FB545220010CAF7 /* FilterSelectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectItem.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 			children = (
 				52E403E21FC7B63F00EE1FA3 /* Gamma.metal */,
 				524CD0BA1FBAFA620081F0E6 /* GaussianBlur.metal */,
-				5216423C2094250D00331CF3 /* BilateralFilter.metal */,
 				52F8BDF91FC807DB00BE0C96 /* Gradient.metal */,
 				5260300B1FC6622C00D03FF6 /* Grayscale.metal */,
 				521F81A51FB596100010CAF7 /* Mosaic.metal */,
@@ -368,7 +365,6 @@
 				524CD1311FC2673D0081F0E6 /* SkinDetect.metal in Sources */,
 				52157AC71FB937D50045116E /* EncoderBufferSetting.swift in Sources */,
 				521F81901FB541FB0010CAF7 /* FilterSelectViewController.swift in Sources */,
-				5216423D2094250D00331CF3 /* BilateralFilter.metal in Sources */,
 				524CD1351FC2CE890081F0E6 /* FilterSelectSection.swift in Sources */,
 				521F81961FB545220010CAF7 /* FilterSelectItem.swift in Sources */,
 				5260300C1FC6622C00D03FF6 /* Grayscale.metal in Sources */,

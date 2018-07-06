@@ -39,6 +39,23 @@ class VideoProcessingViewController: UIViewController {
         }
     }()
     
+    lazy var grayPipelineState: MTLRenderPipelineState = {
+        let library = device.makeDefaultLibrary()!
+        
+        let pipelineDescriptor = MTLRenderPipelineDescriptor()
+        pipelineDescriptor.sampleCount = 1
+        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        pipelineDescriptor.depthAttachmentPixelFormat = .invalid
+        pipelineDescriptor.vertexFunction = library.makeFunction(name: "grayscaleVertex")
+        pipelineDescriptor.fragmentFunction = library.makeFunction(name: "grayscaleFragment")
+        
+        do {
+            return try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
+        } catch {
+            fatalError("Failed creating a render state pipeline. Can't render the texture without one.")
+        }
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMetal()
@@ -80,11 +97,14 @@ extension VideoProcessingViewController: MTKViewDelegate {
         
         encoder.pushDebugGroup("RenderFrame")
         encoder.setRenderPipelineState(pipelineState)
+        
+        encoder.setRenderPipelineState(grayPipelineState)
+        
         encoder.setFragmentTexture(sourceTexture, index: 0)
         encoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4, instanceCount: 1)
         encoder.popDebugGroup()
         encoder.endEncoding()
-
+        
         commandBuffer.present(currentDrawable)
         commandBuffer.commit()
     }
