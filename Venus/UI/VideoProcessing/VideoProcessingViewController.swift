@@ -56,6 +56,23 @@ class VideoProcessingViewController: UIViewController {
         }
     }()
     
+    lazy var gradientPipelineState: MTLRenderPipelineState = {
+        let library = device.makeDefaultLibrary()!
+        
+        let pipelineDescriptor = MTLRenderPipelineDescriptor()
+        pipelineDescriptor.sampleCount = 1
+        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        pipelineDescriptor.depthAttachmentPixelFormat = .invalid
+        pipelineDescriptor.vertexFunction = library.makeFunction(name: "gradientVertex")
+        pipelineDescriptor.fragmentFunction = library.makeFunction(name: "gradientFragment")
+        
+        do {
+            return try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
+        } catch {
+            fatalError("Failed creating a render state pipeline. Can't render the texture without one.")
+        }
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMetal()
@@ -96,7 +113,6 @@ extension VideoProcessingViewController: MTKViewDelegate {
             else { return }
         
         encoder.pushDebugGroup("RenderFrame")
-        encoder.setRenderPipelineState(pipelineState)
         
         encoder.setRenderPipelineState(grayPipelineState)
         
@@ -107,7 +123,10 @@ extension VideoProcessingViewController: MTKViewDelegate {
         
         commandBuffer.present(currentDrawable)
         commandBuffer.commit()
+        
     }
+
+    
 }
 
 extension VideoProcessingViewController: VideoProviderDelegate {
