@@ -14,63 +14,20 @@ class VideoProcessingViewController: UIViewController {
 
     @IBOutlet weak var mtkView: MTKView!
     
-    let device = MTLCreateSystemDefaultDevice()!
-    var commandQueue: MTLCommandQueue!
+    let device = SACMetalCenter.shared.device
+    var commandQueue = SACMetalCenter.shared.commandQueue
     var sourceTexture: MTLTexture?
     
     lazy var videoProvider: VideoProvider? = {
         return VideoProvider(device: self.device, delegate: self)
     }()
     
-    lazy var pipelineState: MTLRenderPipelineState = {
-        let library = device.makeDefaultLibrary()!
-        
-        let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.sampleCount = 1
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        pipelineDescriptor.depthAttachmentPixelFormat = .invalid
-        pipelineDescriptor.vertexFunction = library.makeFunction(name: "mapTexture")
-        pipelineDescriptor.fragmentFunction = library.makeFunction(name: "displayTexture")
-        
-        do {
-            return try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
-        } catch {
-            fatalError("Failed creating a render state pipeline. Can't render the texture without one.")
-        }
-    }()
-    
     lazy var grayPipelineState: MTLRenderPipelineState = {
-        let library = device.makeDefaultLibrary()!
-        
-        let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.sampleCount = 1
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        pipelineDescriptor.depthAttachmentPixelFormat = .invalid
-        pipelineDescriptor.vertexFunction = library.makeFunction(name: "grayscaleVertex")
-        pipelineDescriptor.fragmentFunction = library.makeFunction(name: "grayscaleFragment")
-        
-        do {
-            return try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
-        } catch {
-            fatalError("Failed creating a render state pipeline. Can't render the texture without one.")
-        }
+        return SACRenderPipelineState.createRenderPipelineState(type: .grayscale)
     }()
     
     lazy var gradientPipelineState: MTLRenderPipelineState = {
-        let library = device.makeDefaultLibrary()!
-        
-        let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.sampleCount = 1
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        pipelineDescriptor.depthAttachmentPixelFormat = .invalid
-        pipelineDescriptor.vertexFunction = library.makeFunction(name: "gradientVertex")
-        pipelineDescriptor.fragmentFunction = library.makeFunction(name: "gradientFragment")
-        
-        do {
-            return try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
-        } catch {
-            fatalError("Failed creating a render state pipeline. Can't render the texture without one.")
-        }
+        return SACRenderPipelineState.createRenderPipelineState(type: .gradient)
     }()
     
     override func viewDidLoad() {
@@ -89,8 +46,7 @@ class VideoProcessingViewController: UIViewController {
     }
 
     private func setupMetal() {
-        commandQueue = device.makeCommandQueue()
-        
+        SACMetalCenter.shared.renderingSize = CGSize(width: 1080.0, height: 1920.0)
         mtkView.framebufferOnly = false
         mtkView.isPaused = true
         mtkView.delegate = self
@@ -104,29 +60,9 @@ extension VideoProcessingViewController: MTKViewDelegate {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
     
     func draw(in view: MTKView) {
-        guard
-            let currentRenderPassDescriptor = mtkView.currentRenderPassDescriptor,
-            let currentDrawable = mtkView.currentDrawable,
-            let sourceTexture = sourceTexture,
-            let commandBuffer = device.makeCommandQueue()?.makeCommandBuffer(),
-            let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: currentRenderPassDescriptor)
-            else { return }
-        
-        encoder.pushDebugGroup("RenderFrame")
-        
-        encoder.setRenderPipelineState(grayPipelineState)
-        
-        encoder.setFragmentTexture(sourceTexture, index: 0)
-        encoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4, instanceCount: 1)
-        encoder.popDebugGroup()
-        encoder.endEncoding()
-        
-        commandBuffer.present(currentDrawable)
-        commandBuffer.commit()
-        
+        SACMetalCenter.shared.filters = [.grayscale, .gradient]
+        SACMetalCenter.shared.render(sourceTexture: sourceTexture!, renderView: mtkView)
     }
-
-    
 }
 
 extension VideoProcessingViewController: VideoProviderDelegate {

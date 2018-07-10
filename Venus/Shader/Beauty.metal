@@ -14,7 +14,7 @@ typedef struct {
     float2 textureCoordinate;
 } TextureMappingVertex;
 
-vertex TextureMappingVertex mapTexture(unsigned int vertex_id [[ vertex_id ]]) {
+vertex TextureMappingVertex mappingVertex(unsigned int vertex_id [[ vertex_id ]]) {
     float4x4 renderedCoordinates = float4x4(float4( -1.0, -1.0, 0.0, 1.0 ),
                                             float4(  1.0, -1.0, 0.0, 1.0 ),
                                             float4( -1.0,  1.0, 0.0, 1.0 ),
@@ -31,7 +31,7 @@ vertex TextureMappingVertex mapTexture(unsigned int vertex_id [[ vertex_id ]]) {
     return outVertex;
 }
 
-fragment half4 displayTexture(TextureMappingVertex mappingVertex [[ stage_in ]],
+fragment half4 mappingFragment(TextureMappingVertex mappingVertex [[ stage_in ]],
                               texture2d<float, access::sample> texture [[ texture(0) ]]) {
     constexpr sampler s(address::clamp_to_edge, filter::linear);
     
