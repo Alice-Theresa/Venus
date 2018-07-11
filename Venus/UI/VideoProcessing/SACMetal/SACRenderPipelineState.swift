@@ -17,16 +17,27 @@ enum SACRenderPipelineStateType: String {
 
 class SACRenderPipelineState {
     
-    static func createRenderPipelineState(type: SACRenderPipelineStateType) -> MTLRenderPipelineState {
+    private static let dict : [ SACRenderPipelineStateType : MTLRenderPipelineState] = [
+        .mapping : SACRenderPipelineState.mappingRenderPipelineState,
+        .grayscale : SACRenderPipelineState.grayscaleRenderPipelineState,
+        .gradient : SACRenderPipelineState.gradientRenderPipelineState
+    ]
+    
+    static func fetch(type: SACRenderPipelineStateType) -> MTLRenderPipelineState {
+        return dict[type]!
+    }
+    
+    private static func create(type: SACRenderPipelineStateType) -> MTLRenderPipelineState {
         let vertex = type.rawValue + "Vertex"
         let fragment = type.rawValue + "Fragment"
-        let library = SACMetalCenter.shared.device.makeDefaultLibrary()!
+        guard let library = SACMetalCenter.shared.device.makeDefaultLibrary() else {
+            fatalError("Failed creating a library.")
+        }
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.sampleCount = 1
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        pipelineDescriptor.depthAttachmentPixelFormat = .invalid
-        pipelineDescriptor.vertexFunction = library.makeFunction(name: vertex)
-        pipelineDescriptor.fragmentFunction = library.makeFunction(name: fragment)
+        pipelineDescriptor.depthAttachmentPixelFormat      = .invalid
+        pipelineDescriptor.vertexFunction                  = library.makeFunction(name: vertex)
+        pipelineDescriptor.fragmentFunction                = library.makeFunction(name: fragment)
         
         do {
             return try SACMetalCenter.shared.device.makeRenderPipelineState(descriptor: pipelineDescriptor)
@@ -34,5 +45,17 @@ class SACRenderPipelineState {
             fatalError("Failed creating a render state pipeline. Can't render the texture without one.")
         }
     }
+    
+    private static var mappingRenderPipelineState: MTLRenderPipelineState = {
+        return SACRenderPipelineState.create(type: .mapping)
+    }()
+    
+    private static var grayscaleRenderPipelineState: MTLRenderPipelineState = {
+        return SACRenderPipelineState.create(type: .grayscale)
+    }()
+    
+    private static var gradientRenderPipelineState: MTLRenderPipelineState = {
+        return SACRenderPipelineState.create(type: .gradient)
+    }()
         
 }

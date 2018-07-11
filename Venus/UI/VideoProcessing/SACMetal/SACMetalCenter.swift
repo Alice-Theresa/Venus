@@ -42,23 +42,24 @@ class SACMetalCenter {
     }
     
     func render(sourceTexture: MTLTexture, renderView: MTKView) {
+        check()
         
         for (index, filter) in filters.enumerated() {
             
-            var inputTexture, renderTexture: MTLTexture
+            var inputTexture, targetTexture: MTLTexture
             if index == 0 {
-                renderTexture = firstTexture
                 inputTexture = sourceTexture
+                targetTexture = firstTexture
             } else if index % 2 == 0 {
                 inputTexture = secondTexture
-                renderTexture = firstTexture
+                targetTexture = firstTexture
             } else {
                 inputTexture = firstTexture
-                renderTexture = secondTexture
+                targetTexture = secondTexture
             }
             
             let renderPassDescriptor = MTLRenderPassDescriptor()
-            renderPassDescriptor.colorAttachments[0].texture = renderTexture
+            renderPassDescriptor.colorAttachments[0].texture = targetTexture
             renderPassDescriptor.colorAttachments[0].loadAction = .clear
             renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
             renderPassDescriptor.colorAttachments[0].storeAction = .multisampleResolve
@@ -67,7 +68,7 @@ class SACMetalCenter {
                 let encoder = buffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
                 else { return }
             
-            let state = SACRenderPipelineState.createRenderPipelineState(type: filter)
+            let state = SACRenderPipelineState.fetch(type: filter)
             
             let size: [Float] = [Float(renderingSize.width), Float(renderingSize.height)]
             let dataBuffer = device.makeBuffer(bytes: size, length: size.count * MemoryLayout.size(ofValue: size[0]), options: [])
@@ -88,10 +89,12 @@ class SACMetalCenter {
             let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: currentRenderPassDescriptor)
             else { return }
         
-        let state = SACRenderPipelineState.createRenderPipelineState(type: .mapping)
+        let state = SACRenderPipelineState.fetch(type: .mapping)
         encoder.setRenderPipelineState(state)
         var texture: MTLTexture
-        if filters.count % 2 == 0 {
+        if filters.count == 0 {
+            texture = sourceTexture
+        } else if filters.count % 2 == 0 {
             texture = secondTexture
         } else {
             texture = firstTexture
@@ -104,4 +107,10 @@ class SACMetalCenter {
         commandBuffer.commit()
     }
     
+    func check() {
+        if renderingSize.width == 0 || renderingSize.height == 0 {
+            fatalError()
+        }
+        
+    }
 }

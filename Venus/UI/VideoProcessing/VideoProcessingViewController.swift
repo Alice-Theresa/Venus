@@ -22,14 +22,6 @@ class VideoProcessingViewController: UIViewController {
         return VideoProvider(device: self.device, delegate: self)
     }()
     
-    lazy var grayPipelineState: MTLRenderPipelineState = {
-        return SACRenderPipelineState.createRenderPipelineState(type: .grayscale)
-    }()
-    
-    lazy var gradientPipelineState: MTLRenderPipelineState = {
-        return SACRenderPipelineState.createRenderPipelineState(type: .gradient)
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMetal()
