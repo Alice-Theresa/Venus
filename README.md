@@ -1,6 +1,6 @@
 # Venus
 
-### Image / Video processing using Metal
+### Image processing using Metal
 
 image filters
 -|
@@ -14,3 +14,6 @@ polka dot
 gaussian blur (2D-matrix)
 fast gaussian blur (2 * 1D-matrix)
 bilateral filter
+guide filter
+
+
